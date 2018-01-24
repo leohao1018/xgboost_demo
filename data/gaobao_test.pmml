@@ -1,0 +1,1904 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<PMML xmlns="http://www.dmg.org/PMML-4_3" version="4.3">
+	<Header>
+		<Application name="JPMML-XGBoost" version="1.2-SNAPSHOT"/>
+		<Timestamp>2018-01-02T08:37:51Z</Timestamp>
+	</Header>
+	<DataDictionary>
+		<DataField name="target" optype="categorical" dataType="string">
+			<Value value="0"/>
+			<Value value="1"/>
+		</DataField>
+		<DataField name="PHONE_USE_MTH" optype="continuous" dataType="float"/>
+		<DataField name="L90D_RG_CTT_TM" optype="continuous" dataType="float"/>
+		<DataField name="SCR_CELL_CALLED_TIMES" optype="continuous" dataType="float"/>
+		<DataField name="SCR_CELL_CALLED_PHONE_CNT" optype="continuous" dataType="float"/>
+		<DataField name="SCR_CELL_CTT_DAYS_CNT" optype="continuous" dataType="float"/>
+		<DataField name="SCR_CELL_CALLED_CTT_DAYS_CNT" optype="continuous" dataType="float"/>
+		<DataField name="SCR_CELL_180_CALLING_SUBTTL" optype="continuous" dataType="float"/>
+		<DataField name="SCR_CELL_MRNG_CALLED_TIMES" optype="continuous" dataType="float"/>
+		<DataField name="SCR_CELL_AFTN_CALL_TTL_TIME" optype="continuous" dataType="float"/>
+		<DataField name="SCR_CELL_NIGHT_CALL_TTL_TIME" optype="continuous" dataType="float"/>
+		<DataField name="SCR_CELL_CALL_PHONE_CNT" optype="continuous" dataType="float"/>
+		<DataField name="SCR_CELL_CALLING_CTT_DAYS_CNT" optype="continuous" dataType="float"/>
+		<DataField name="SCR_CELL_NIGHT_CALLED_TTL_TIME" optype="continuous" dataType="float"/>
+		<DataField name="SCR_CELL_AFTN_CALLING_TTL_TIME" optype="continuous" dataType="float"/>
+		<DataField name="SCR_CELL_NIGHT_CALLING_TTL_TIME" optype="continuous" dataType="float"/>
+		<DataField name="SCR_CELL_DAY_CALLING_TTL_TIME" optype="continuous" dataType="float"/>
+		<DataField name="SCR_CELL_EVN_CALL_TTL_TIME" optype="continuous" dataType="float"/>
+		<DataField name="SCR_CELL_90DAY_CALLING_TTL_TIME" optype="continuous" dataType="float"/>
+		<DataField name="SCR_CELL_CALL_SMY_ANS_AFTN_CNT" optype="continuous" dataType="float"/>
+		<DataField name="SCR_CELL_90DAY_CALL_TTL_TIME" optype="continuous" dataType="float"/>
+		<DataField name="SCR_CELL_CALL_LSTM2_CONTACTS_CNT" optype="continuous" dataType="float"/>
+		<DataField name="SMS_L150D_TTL_PPL" optype="continuous" dataType="float"/>
+		<DataField name="SMS_L30D_SEND_CNT" optype="continuous" dataType="float"/>
+		<DataField name="SMS_L30D_TOTAL_CNT" optype="continuous" dataType="float"/>
+		<DataField name="sms_l90d_send_cnt" optype="continuous" dataType="float"/>
+		<DataField name="sms_l90d_total_cnt" optype="continuous" dataType="float"/>
+		<DataField name="SCR_CELL_SMS_LSTM3_SEND_CNT" optype="continuous" dataType="float"/>
+		<DataField name="TRC_LSM1_AVG_PLAN_AMT" optype="continuous" dataType="float"/>
+		<DataField name="TRC_LSM1_AVG_TOTAL_AMT" optype="continuous" dataType="float"/>
+		<DataField name="TRC_LSM5_TOTAL_AMT" optype="continuous" dataType="float"/>
+		<DataField name="SCR_CELL_MAX_PLAN_AMT" optype="continuous" dataType="float"/>
+		<DataField name="SCR_CELL_PH_USE_MONS" optype="continuous" dataType="float"/>
+	</DataDictionary>
+	<MiningModel functionName="classification" x-mathContext="float">
+		<MiningSchema>
+			<MiningField name="target" usageType="target"/>
+			<MiningField name="sms_l90d_total_cnt"/>
+			<MiningField name="L90D_RG_CTT_TM"/>
+			<MiningField name="SCR_CELL_NIGHT_CALLED_TTL_TIME"/>
+			<MiningField name="SCR_CELL_MAX_PLAN_AMT"/>
+			<MiningField name="SMS_L30D_SEND_CNT"/>
+			<MiningField name="SCR_CELL_PH_USE_MONS"/>
+			<MiningField name="SCR_CELL_CALL_PHONE_CNT"/>
+			<MiningField name="SCR_CELL_CTT_DAYS_CNT"/>
+			<MiningField name="SCR_CELL_90DAY_CALL_TTL_TIME"/>
+			<MiningField name="SCR_CELL_MRNG_CALLED_TIMES"/>
+			<MiningField name="SCR_CELL_SMS_LSTM3_SEND_CNT"/>
+			<MiningField name="SCR_CELL_CALL_SMY_ANS_AFTN_CNT"/>
+			<MiningField name="SCR_CELL_AFTN_CALL_TTL_TIME"/>
+			<MiningField name="TRC_LSM1_AVG_PLAN_AMT"/>
+			<MiningField name="SCR_CELL_EVN_CALL_TTL_TIME"/>
+			<MiningField name="SCR_CELL_CALLED_PHONE_CNT"/>
+			<MiningField name="SMS_L30D_TOTAL_CNT"/>
+			<MiningField name="SCR_CELL_CALLED_TIMES"/>
+			<MiningField name="SCR_CELL_180_CALLING_SUBTTL"/>
+			<MiningField name="SCR_CELL_CALLING_CTT_DAYS_CNT"/>
+			<MiningField name="SCR_CELL_NIGHT_CALL_TTL_TIME"/>
+			<MiningField name="sms_l90d_send_cnt"/>
+			<MiningField name="SCR_CELL_NIGHT_CALLING_TTL_TIME"/>
+			<MiningField name="TRC_LSM5_TOTAL_AMT"/>
+			<MiningField name="SCR_CELL_90DAY_CALLING_TTL_TIME"/>
+			<MiningField name="TRC_LSM1_AVG_TOTAL_AMT"/>
+			<MiningField name="SCR_CELL_AFTN_CALLING_TTL_TIME"/>
+			<MiningField name="SCR_CELL_CALL_LSTM2_CONTACTS_CNT"/>
+			<MiningField name="SCR_CELL_DAY_CALLING_TTL_TIME"/>
+			<MiningField name="SMS_L150D_TTL_PPL"/>
+			<MiningField name="PHONE_USE_MTH"/>
+			<MiningField name="SCR_CELL_CALLED_CTT_DAYS_CNT"/>
+		</MiningSchema>
+		<Segmentation multipleModelMethod="modelChain">
+			<Segment id="1">
+				<True/>
+				<MiningModel functionName="regression" x-mathContext="float">
+					<MiningSchema>
+						<MiningField name="sms_l90d_total_cnt"/>
+						<MiningField name="L90D_RG_CTT_TM"/>
+						<MiningField name="SCR_CELL_NIGHT_CALLED_TTL_TIME"/>
+						<MiningField name="SCR_CELL_MAX_PLAN_AMT"/>
+						<MiningField name="SMS_L30D_SEND_CNT"/>
+						<MiningField name="SCR_CELL_PH_USE_MONS"/>
+						<MiningField name="SCR_CELL_CALL_PHONE_CNT"/>
+						<MiningField name="SCR_CELL_CTT_DAYS_CNT"/>
+						<MiningField name="SCR_CELL_90DAY_CALL_TTL_TIME"/>
+						<MiningField name="SCR_CELL_MRNG_CALLED_TIMES"/>
+						<MiningField name="SCR_CELL_SMS_LSTM3_SEND_CNT"/>
+						<MiningField name="SCR_CELL_CALL_SMY_ANS_AFTN_CNT"/>
+						<MiningField name="SCR_CELL_AFTN_CALL_TTL_TIME"/>
+						<MiningField name="TRC_LSM1_AVG_PLAN_AMT"/>
+						<MiningField name="SCR_CELL_EVN_CALL_TTL_TIME"/>
+						<MiningField name="SCR_CELL_CALLED_PHONE_CNT"/>
+						<MiningField name="SMS_L30D_TOTAL_CNT"/>
+						<MiningField name="SCR_CELL_CALLED_TIMES"/>
+						<MiningField name="SCR_CELL_180_CALLING_SUBTTL"/>
+						<MiningField name="SCR_CELL_CALLING_CTT_DAYS_CNT"/>
+						<MiningField name="SCR_CELL_NIGHT_CALL_TTL_TIME"/>
+						<MiningField name="sms_l90d_send_cnt"/>
+						<MiningField name="SCR_CELL_NIGHT_CALLING_TTL_TIME"/>
+						<MiningField name="TRC_LSM5_TOTAL_AMT"/>
+						<MiningField name="SCR_CELL_90DAY_CALLING_TTL_TIME"/>
+						<MiningField name="TRC_LSM1_AVG_TOTAL_AMT"/>
+						<MiningField name="SCR_CELL_AFTN_CALLING_TTL_TIME"/>
+						<MiningField name="SCR_CELL_CALL_LSTM2_CONTACTS_CNT"/>
+						<MiningField name="SCR_CELL_DAY_CALLING_TTL_TIME"/>
+						<MiningField name="SMS_L150D_TTL_PPL"/>
+						<MiningField name="PHONE_USE_MTH"/>
+						<MiningField name="SCR_CELL_CALLED_CTT_DAYS_CNT"/>
+					</MiningSchema>
+					<Output>
+						<OutputField name="xgbValue" optype="continuous" dataType="float" feature="predictedValue" isFinalResult="false"/>
+					</Output>
+					<Segmentation multipleModelMethod="sum">
+						<Segment id="1">
+							<True/>
+							<TreeModel functionName="regression" missingValueStrategy="defaultChild" splitCharacteristic="binarySplit" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="PHONE_USE_MTH"/>
+									<MiningField name="L90D_RG_CTT_TM"/>
+									<MiningField name="SCR_CELL_MRNG_CALLED_TIMES"/>
+									<MiningField name="SMS_L30D_SEND_CNT"/>
+									<MiningField name="SMS_L30D_TOTAL_CNT"/>
+								</MiningSchema>
+								<Node id="1" defaultChild="2">
+									<True/>
+									<Node id="2" defaultChild="4">
+										<SimplePredicate field="PHONE_USE_MTH" operator="lessThan" value="26.5"/>
+										<Node id="4" score="-0.14894009">
+											<SimplePredicate field="SMS_L30D_SEND_CNT" operator="lessThan" value="2086.0"/>
+										</Node>
+										<Node id="5" defaultChild="8">
+											<SimplePredicate field="SMS_L30D_SEND_CNT" operator="greaterOrEqual" value="2086.0"/>
+											<Node id="8" score="-0.04">
+												<SimplePredicate field="SCR_CELL_MRNG_CALLED_TIMES" operator="lessThan" value="329.5"/>
+											</Node>
+											<Node id="9" score="-0.121599995">
+												<SimplePredicate field="SCR_CELL_MRNG_CALLED_TIMES" operator="greaterOrEqual" value="329.5"/>
+											</Node>
+										</Node>
+									</Node>
+									<Node id="3" defaultChild="6">
+										<SimplePredicate field="PHONE_USE_MTH" operator="greaterOrEqual" value="26.5"/>
+										<Node id="6" defaultChild="10">
+											<SimplePredicate field="SMS_L30D_SEND_CNT" operator="lessThan" value="11.5"/>
+											<Node id="10" score="-0.14693877">
+												<SimplePredicate field="SMS_L30D_TOTAL_CNT" operator="lessThan" value="429.5"/>
+											</Node>
+											<Node id="11" score="-0.10566038">
+												<SimplePredicate field="SMS_L30D_TOTAL_CNT" operator="greaterOrEqual" value="429.5"/>
+											</Node>
+										</Node>
+										<Node id="7" defaultChild="12">
+											<SimplePredicate field="SMS_L30D_SEND_CNT" operator="greaterOrEqual" value="11.5"/>
+											<Node id="12" score="-0.13572413">
+												<SimplePredicate field="L90D_RG_CTT_TM" operator="lessThan" value="10596.5"/>
+											</Node>
+											<Node id="13" score="-0.11648822">
+												<SimplePredicate field="L90D_RG_CTT_TM" operator="greaterOrEqual" value="10596.5"/>
+											</Node>
+										</Node>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="2">
+							<True/>
+							<TreeModel functionName="regression" missingValueStrategy="defaultChild" splitCharacteristic="binarySplit" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="PHONE_USE_MTH"/>
+									<MiningField name="SCR_CELL_180_CALLING_SUBTTL"/>
+									<MiningField name="SCR_CELL_NIGHT_CALLING_TTL_TIME"/>
+									<MiningField name="SMS_L150D_TTL_PPL"/>
+									<MiningField name="TRC_LSM5_TOTAL_AMT"/>
+								</MiningSchema>
+								<Node id="1" defaultChild="2">
+									<True/>
+									<Node id="2" defaultChild="4">
+										<SimplePredicate field="SCR_CELL_180_CALLING_SUBTTL" operator="lessThan" value="31.45"/>
+										<Node id="4" score="-0.13834831">
+											<SimplePredicate field="PHONE_USE_MTH" operator="lessThan" value="24.5"/>
+										</Node>
+										<Node id="5" defaultChild="8">
+											<SimplePredicate field="PHONE_USE_MTH" operator="greaterOrEqual" value="24.5"/>
+											<Node id="8" score="-0.13255383">
+												<SimplePredicate field="SMS_L150D_TTL_PPL" operator="lessThan" value="29.5"/>
+											</Node>
+											<Node id="9" score="-0.10967334">
+												<SimplePredicate field="SMS_L150D_TTL_PPL" operator="greaterOrEqual" value="29.5"/>
+											</Node>
+										</Node>
+									</Node>
+									<Node id="3" defaultChild="6">
+										<SimplePredicate field="SCR_CELL_180_CALLING_SUBTTL" operator="greaterOrEqual" value="31.45"/>
+										<Node id="6" defaultChild="10">
+											<SimplePredicate field="SCR_CELL_NIGHT_CALLING_TTL_TIME" operator="lessThan" value="53764.5"/>
+											<Node id="10" score="-0.12136909">
+												<SimplePredicate field="TRC_LSM5_TOTAL_AMT" operator="lessThan" value="1951.0549"/>
+											</Node>
+											<Node id="11" score="-0.07992457">
+												<SimplePredicate field="TRC_LSM5_TOTAL_AMT" operator="greaterOrEqual" value="1951.0549"/>
+											</Node>
+										</Node>
+										<Node id="7" score="-0.04515485">
+											<SimplePredicate field="SCR_CELL_NIGHT_CALLING_TTL_TIME" operator="greaterOrEqual" value="53764.5"/>
+										</Node>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="3">
+							<True/>
+							<TreeModel functionName="regression" missingValueStrategy="defaultChild" splitCharacteristic="binarySplit" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="PHONE_USE_MTH"/>
+									<MiningField name="SCR_CELL_CALLED_PHONE_CNT"/>
+									<MiningField name="SMS_L30D_TOTAL_CNT"/>
+									<MiningField name="TRC_LSM5_TOTAL_AMT"/>
+								</MiningSchema>
+								<Node id="1" defaultChild="2">
+									<True/>
+									<Node id="2" defaultChild="4">
+										<SimplePredicate field="PHONE_USE_MTH" operator="lessThan" value="24.5"/>
+										<Node id="4" score="-0.1294305">
+											<SimplePredicate field="SMS_L30D_TOTAL_CNT" operator="lessThan" value="838.0"/>
+										</Node>
+										<Node id="5" defaultChild="8">
+											<SimplePredicate field="SMS_L30D_TOTAL_CNT" operator="greaterOrEqual" value="838.0"/>
+											<Node id="8" score="-0.047848403">
+												<SimplePredicate field="SMS_L30D_TOTAL_CNT" operator="lessThan" value="907.0"/>
+											</Node>
+											<Node id="9" score="-0.120549895">
+												<SimplePredicate field="SMS_L30D_TOTAL_CNT" operator="greaterOrEqual" value="907.0"/>
+											</Node>
+										</Node>
+									</Node>
+									<Node id="3" defaultChild="6">
+										<SimplePredicate field="PHONE_USE_MTH" operator="greaterOrEqual" value="24.5"/>
+										<Node id="6" defaultChild="10">
+											<SimplePredicate field="SMS_L30D_TOTAL_CNT" operator="lessThan" value="24.5"/>
+											<Node id="10" score="-0.12587747">
+												<SimplePredicate field="TRC_LSM5_TOTAL_AMT" operator="lessThan" value="2436.4849"/>
+											</Node>
+											<Node id="11" score="-0.05778698">
+												<SimplePredicate field="TRC_LSM5_TOTAL_AMT" operator="greaterOrEqual" value="2436.4849"/>
+											</Node>
+										</Node>
+										<Node id="7" defaultChild="12">
+											<SimplePredicate field="SMS_L30D_TOTAL_CNT" operator="greaterOrEqual" value="24.5"/>
+											<Node id="12" score="-0.10844">
+												<SimplePredicate field="SCR_CELL_CALLED_PHONE_CNT" operator="lessThan" value="750.0"/>
+											</Node>
+											<Node id="13" score="-0.03424215">
+												<SimplePredicate field="SCR_CELL_CALLED_PHONE_CNT" operator="greaterOrEqual" value="750.0"/>
+											</Node>
+										</Node>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="4">
+							<True/>
+							<TreeModel functionName="regression" missingValueStrategy="defaultChild" splitCharacteristic="binarySplit" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="PHONE_USE_MTH"/>
+									<MiningField name="SCR_CELL_CALLING_CTT_DAYS_CNT"/>
+									<MiningField name="SCR_CELL_EVN_CALL_TTL_TIME"/>
+									<MiningField name="SMS_L30D_SEND_CNT"/>
+									<MiningField name="SMS_L30D_TOTAL_CNT"/>
+									<MiningField name="TRC_LSM5_TOTAL_AMT"/>
+								</MiningSchema>
+								<Node id="1" defaultChild="2">
+									<True/>
+									<Node id="2" defaultChild="4">
+										<SimplePredicate field="PHONE_USE_MTH" operator="lessThan" value="8.5"/>
+										<Node id="4" score="-0.12242755">
+											<SimplePredicate field="SMS_L30D_TOTAL_CNT" operator="lessThan" value="849.5"/>
+										</Node>
+										<Node id="5" defaultChild="8">
+											<SimplePredicate field="SMS_L30D_TOTAL_CNT" operator="greaterOrEqual" value="849.5"/>
+											<Node id="8" score="-0.120272316">
+												<SimplePredicate field="TRC_LSM5_TOTAL_AMT" operator="lessThan" value="1184.5449"/>
+											</Node>
+											<Node id="9" score="-0.07981961">
+												<SimplePredicate field="TRC_LSM5_TOTAL_AMT" operator="greaterOrEqual" value="1184.5449"/>
+											</Node>
+										</Node>
+									</Node>
+									<Node id="3" defaultChild="6">
+										<SimplePredicate field="PHONE_USE_MTH" operator="greaterOrEqual" value="8.5"/>
+										<Node id="6" defaultChild="10">
+											<SimplePredicate field="SCR_CELL_EVN_CALL_TTL_TIME" operator="lessThan" value="1935.0"/>
+											<Node id="10" score="-0.10749789">
+												<SimplePredicate field="SCR_CELL_CALLING_CTT_DAYS_CNT" operator="lessThan" value="114.5"/>
+											</Node>
+											<Node id="11" score="-0.121691175">
+												<SimplePredicate field="SCR_CELL_CALLING_CTT_DAYS_CNT" operator="greaterOrEqual" value="114.5"/>
+											</Node>
+										</Node>
+										<Node id="7" defaultChild="12">
+											<SimplePredicate field="SCR_CELL_EVN_CALL_TTL_TIME" operator="greaterOrEqual" value="1935.0"/>
+											<Node id="12" score="-0.10113919">
+												<SimplePredicate field="SMS_L30D_SEND_CNT" operator="lessThan" value="2024.0"/>
+											</Node>
+											<Node id="13" score="-0.03024196">
+												<SimplePredicate field="SMS_L30D_SEND_CNT" operator="greaterOrEqual" value="2024.0"/>
+											</Node>
+										</Node>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="5">
+							<True/>
+							<TreeModel functionName="regression" missingValueStrategy="defaultChild" splitCharacteristic="binarySplit" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="PHONE_USE_MTH"/>
+									<MiningField name="SCR_CELL_CALLED_CTT_DAYS_CNT"/>
+									<MiningField name="SCR_CELL_180_CALLING_SUBTTL"/>
+									<MiningField name="SCR_CELL_EVN_CALL_TTL_TIME"/>
+									<MiningField name="SMS_L150D_TTL_PPL"/>
+									<MiningField name="SMS_L30D_SEND_CNT"/>
+								</MiningSchema>
+								<Node id="1" defaultChild="2">
+									<True/>
+									<Node id="2" defaultChild="4">
+										<SimplePredicate field="SCR_CELL_180_CALLING_SUBTTL" operator="lessThan" value="32.415"/>
+										<Node id="4" defaultChild="8">
+											<SimplePredicate field="PHONE_USE_MTH" operator="lessThan" value="9.5"/>
+											<Node id="8" score="-0.11568936">
+												<SimplePredicate field="SMS_L30D_SEND_CNT" operator="lessThan" value="1562.5"/>
+											</Node>
+											<Node id="9" score="-0.08495247">
+												<SimplePredicate field="SMS_L30D_SEND_CNT" operator="greaterOrEqual" value="1562.5"/>
+											</Node>
+										</Node>
+										<Node id="5" defaultChild="10">
+											<SimplePredicate field="PHONE_USE_MTH" operator="greaterOrEqual" value="9.5"/>
+											<Node id="10" score="-0.112827">
+												<SimplePredicate field="SMS_L150D_TTL_PPL" operator="lessThan" value="13.5"/>
+											</Node>
+											<Node id="11" score="-0.09922574">
+												<SimplePredicate field="SMS_L150D_TTL_PPL" operator="greaterOrEqual" value="13.5"/>
+											</Node>
+										</Node>
+									</Node>
+									<Node id="3" defaultChild="6">
+										<SimplePredicate field="SCR_CELL_180_CALLING_SUBTTL" operator="greaterOrEqual" value="32.415"/>
+										<Node id="6" defaultChild="12">
+											<SimplePredicate field="SCR_CELL_180_CALLING_SUBTTL" operator="lessThan" value="866.805"/>
+											<Node id="12" score="-0.07172063">
+												<SimplePredicate field="SCR_CELL_CALLED_CTT_DAYS_CNT" operator="lessThan" value="119.5"/>
+											</Node>
+											<Node id="13" score="-0.10434362">
+												<SimplePredicate field="SCR_CELL_CALLED_CTT_DAYS_CNT" operator="greaterOrEqual" value="119.5"/>
+											</Node>
+										</Node>
+										<Node id="7" defaultChild="14">
+											<SimplePredicate field="SCR_CELL_180_CALLING_SUBTTL" operator="greaterOrEqual" value="866.805"/>
+											<Node id="14" score="-0.08535217">
+												<SimplePredicate field="SCR_CELL_EVN_CALL_TTL_TIME" operator="lessThan" value="8877.0"/>
+											</Node>
+											<Node id="15" score="-0.022234024">
+												<SimplePredicate field="SCR_CELL_EVN_CALL_TTL_TIME" operator="greaterOrEqual" value="8877.0"/>
+											</Node>
+										</Node>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="6">
+							<True/>
+							<TreeModel functionName="regression" missingValueStrategy="defaultChild" splitCharacteristic="binarySplit" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="PHONE_USE_MTH"/>
+									<MiningField name="SCR_CELL_EVN_CALL_TTL_TIME"/>
+									<MiningField name="SMS_L30D_SEND_CNT"/>
+									<MiningField name="sms_l90d_send_cnt"/>
+									<MiningField name="TRC_LSM5_TOTAL_AMT"/>
+									<MiningField name="SCR_CELL_MAX_PLAN_AMT"/>
+								</MiningSchema>
+								<Node id="1" defaultChild="2">
+									<True/>
+									<Node id="2" defaultChild="4">
+										<SimplePredicate field="PHONE_USE_MTH" operator="lessThan" value="24.5"/>
+										<Node id="4" defaultChild="8">
+											<SimplePredicate field="SMS_L30D_SEND_CNT" operator="lessThan" value="1562.5"/>
+											<Node id="8" score="-0.109623335">
+												<SimplePredicate field="SCR_CELL_MAX_PLAN_AMT" operator="lessThan" value="709.0"/>
+											</Node>
+											<Node id="9" score="-0.054595627">
+												<SimplePredicate field="SCR_CELL_MAX_PLAN_AMT" operator="greaterOrEqual" value="709.0"/>
+											</Node>
+										</Node>
+										<Node id="5" defaultChild="10">
+											<SimplePredicate field="SMS_L30D_SEND_CNT" operator="greaterOrEqual" value="1562.5"/>
+											<Node id="10" score="-0.103735834">
+												<SimplePredicate field="TRC_LSM5_TOTAL_AMT" operator="lessThan" value="1198.445"/>
+											</Node>
+											<Node id="11" score="-0.04444084">
+												<SimplePredicate field="TRC_LSM5_TOTAL_AMT" operator="greaterOrEqual" value="1198.445"/>
+											</Node>
+										</Node>
+									</Node>
+									<Node id="3" defaultChild="6">
+										<SimplePredicate field="PHONE_USE_MTH" operator="greaterOrEqual" value="24.5"/>
+										<Node id="6" defaultChild="12">
+											<SimplePredicate field="SCR_CELL_EVN_CALL_TTL_TIME" operator="lessThan" value="1070.5"/>
+											<Node id="12" score="-0.11523204">
+												<SimplePredicate field="sms_l90d_send_cnt" operator="lessThan" value="50.5"/>
+											</Node>
+											<Node id="13" score="-0.09692314">
+												<SimplePredicate field="sms_l90d_send_cnt" operator="greaterOrEqual" value="50.5"/>
+											</Node>
+										</Node>
+										<Node id="7" defaultChild="14">
+											<SimplePredicate field="SCR_CELL_EVN_CALL_TTL_TIME" operator="greaterOrEqual" value="1070.5"/>
+											<Node id="14" score="-0.08978192">
+												<SimplePredicate field="SMS_L30D_SEND_CNT" operator="lessThan" value="2064.0"/>
+											</Node>
+											<Node id="15" score="-0.03164774">
+												<SimplePredicate field="SMS_L30D_SEND_CNT" operator="greaterOrEqual" value="2064.0"/>
+											</Node>
+										</Node>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="7">
+							<True/>
+							<TreeModel functionName="regression" missingValueStrategy="defaultChild" splitCharacteristic="binarySplit" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="SCR_CELL_CALLED_TIMES"/>
+									<MiningField name="SCR_CELL_180_CALLING_SUBTTL"/>
+									<MiningField name="SCR_CELL_AFTN_CALL_TTL_TIME"/>
+									<MiningField name="SCR_CELL_CALLING_CTT_DAYS_CNT"/>
+									<MiningField name="SCR_CELL_EVN_CALL_TTL_TIME"/>
+									<MiningField name="SMS_L30D_SEND_CNT"/>
+								</MiningSchema>
+								<Node id="1" defaultChild="2">
+									<True/>
+									<Node id="2" defaultChild="4">
+										<SimplePredicate field="SCR_CELL_180_CALLING_SUBTTL" operator="lessThan" value="34.67"/>
+										<Node id="4" defaultChild="8">
+											<SimplePredicate field="SCR_CELL_EVN_CALL_TTL_TIME" operator="lessThan" value="3472.0"/>
+											<Node id="8" score="-0.1020651">
+												<SimplePredicate field="SCR_CELL_CALLING_CTT_DAYS_CNT" operator="lessThan" value="138.5"/>
+											</Node>
+											<Node id="9" score="-0.11071247">
+												<SimplePredicate field="SCR_CELL_CALLING_CTT_DAYS_CNT" operator="greaterOrEqual" value="138.5"/>
+											</Node>
+										</Node>
+										<Node id="5" defaultChild="10">
+											<SimplePredicate field="SCR_CELL_EVN_CALL_TTL_TIME" operator="greaterOrEqual" value="3472.0"/>
+											<Node id="10" score="-0.098451935">
+												<SimplePredicate field="SMS_L30D_SEND_CNT" operator="lessThan" value="2089.0"/>
+											</Node>
+											<Node id="11" score="-0.014361973">
+												<SimplePredicate field="SMS_L30D_SEND_CNT" operator="greaterOrEqual" value="2089.0"/>
+											</Node>
+										</Node>
+									</Node>
+									<Node id="3" defaultChild="6">
+										<SimplePredicate field="SCR_CELL_180_CALLING_SUBTTL" operator="greaterOrEqual" value="34.67"/>
+										<Node id="6" defaultChild="12">
+											<SimplePredicate field="SCR_CELL_EVN_CALL_TTL_TIME" operator="lessThan" value="559.0"/>
+											<Node id="12" score="-0.06185766">
+												<SimplePredicate field="SCR_CELL_AFTN_CALL_TTL_TIME" operator="lessThan" value="9289.0"/>
+											</Node>
+											<Node id="13" score="-0.10862088">
+												<SimplePredicate field="SCR_CELL_AFTN_CALL_TTL_TIME" operator="greaterOrEqual" value="9289.0"/>
+											</Node>
+										</Node>
+										<Node id="7" defaultChild="14">
+											<SimplePredicate field="SCR_CELL_EVN_CALL_TTL_TIME" operator="greaterOrEqual" value="559.0"/>
+											<Node id="14" score="-0.07550469">
+												<SimplePredicate field="SCR_CELL_CALLED_TIMES" operator="lessThan" value="1504.5"/>
+											</Node>
+											<Node id="15" score="-0.1028831">
+												<SimplePredicate field="SCR_CELL_CALLED_TIMES" operator="greaterOrEqual" value="1504.5"/>
+											</Node>
+										</Node>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="8">
+							<True/>
+							<TreeModel functionName="regression" missingValueStrategy="defaultChild" splitCharacteristic="binarySplit" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="PHONE_USE_MTH"/>
+									<MiningField name="SCR_CELL_NIGHT_CALLED_TTL_TIME"/>
+									<MiningField name="SCR_CELL_EVN_CALL_TTL_TIME"/>
+									<MiningField name="SMS_L150D_TTL_PPL"/>
+									<MiningField name="SMS_L30D_SEND_CNT"/>
+									<MiningField name="SMS_L30D_TOTAL_CNT"/>
+									<MiningField name="SCR_CELL_SMS_LSTM3_SEND_CNT"/>
+								</MiningSchema>
+								<Node id="1" defaultChild="2">
+									<True/>
+									<Node id="2" defaultChild="4">
+										<SimplePredicate field="PHONE_USE_MTH" operator="lessThan" value="9.5"/>
+										<Node id="4" defaultChild="8">
+											<SimplePredicate field="SMS_L30D_TOTAL_CNT" operator="lessThan" value="793.5"/>
+											<Node id="8" score="-0.10163321">
+												<SimplePredicate field="SCR_CELL_NIGHT_CALLED_TTL_TIME" operator="lessThan" value="85413.0"/>
+											</Node>
+											<Node id="9" score="-0.06886189">
+												<SimplePredicate field="SCR_CELL_NIGHT_CALLED_TTL_TIME" operator="greaterOrEqual" value="85413.0"/>
+											</Node>
+										</Node>
+										<Node id="5" defaultChild="10">
+											<SimplePredicate field="SMS_L30D_TOTAL_CNT" operator="greaterOrEqual" value="793.5"/>
+											<Node id="10" score="0.0052957023">
+												<SimplePredicate field="SCR_CELL_SMS_LSTM3_SEND_CNT" operator="lessThan" value="932.5"/>
+											</Node>
+											<Node id="11" score="-0.09213666">
+												<SimplePredicate field="SCR_CELL_SMS_LSTM3_SEND_CNT" operator="greaterOrEqual" value="932.5"/>
+											</Node>
+										</Node>
+									</Node>
+									<Node id="3" defaultChild="6">
+										<SimplePredicate field="PHONE_USE_MTH" operator="greaterOrEqual" value="9.5"/>
+										<Node id="6" defaultChild="12">
+											<SimplePredicate field="SCR_CELL_EVN_CALL_TTL_TIME" operator="lessThan" value="1935.0"/>
+											<Node id="12" score="-0.09592108">
+												<SimplePredicate field="SMS_L150D_TTL_PPL" operator="lessThan" value="35.5"/>
+											</Node>
+											<Node id="13" score="-0.06769764">
+												<SimplePredicate field="SMS_L150D_TTL_PPL" operator="greaterOrEqual" value="35.5"/>
+											</Node>
+										</Node>
+										<Node id="7" defaultChild="14">
+											<SimplePredicate field="SCR_CELL_EVN_CALL_TTL_TIME" operator="greaterOrEqual" value="1935.0"/>
+											<Node id="14" score="-0.07844321">
+												<SimplePredicate field="SMS_L30D_SEND_CNT" operator="lessThan" value="2064.0"/>
+											</Node>
+											<Node id="15" score="-0.017875317">
+												<SimplePredicate field="SMS_L30D_SEND_CNT" operator="greaterOrEqual" value="2064.0"/>
+											</Node>
+										</Node>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="9">
+							<True/>
+							<TreeModel functionName="regression" missingValueStrategy="defaultChild" splitCharacteristic="binarySplit" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="PHONE_USE_MTH"/>
+									<MiningField name="SCR_CELL_180_CALLING_SUBTTL"/>
+									<MiningField name="SCR_CELL_CALLING_CTT_DAYS_CNT"/>
+									<MiningField name="SCR_CELL_90DAY_CALL_TTL_TIME"/>
+									<MiningField name="SMS_L30D_SEND_CNT"/>
+									<MiningField name="SMS_L30D_TOTAL_CNT"/>
+								</MiningSchema>
+								<Node id="1" defaultChild="2">
+									<True/>
+									<Node id="2" defaultChild="4">
+										<SimplePredicate field="SCR_CELL_180_CALLING_SUBTTL" operator="lessThan" value="32.415"/>
+										<Node id="4" defaultChild="8">
+											<SimplePredicate field="PHONE_USE_MTH" operator="lessThan" value="10.5"/>
+											<Node id="8" score="-0.09836367">
+												<SimplePredicate field="SMS_L30D_TOTAL_CNT" operator="lessThan" value="793.5"/>
+											</Node>
+											<Node id="9" score="-0.083032">
+												<SimplePredicate field="SMS_L30D_TOTAL_CNT" operator="greaterOrEqual" value="793.5"/>
+											</Node>
+										</Node>
+										<Node id="5" defaultChild="10">
+											<SimplePredicate field="PHONE_USE_MTH" operator="greaterOrEqual" value="10.5"/>
+											<Node id="10" score="-0.09724057">
+												<SimplePredicate field="SMS_L30D_SEND_CNT" operator="lessThan" value="11.5"/>
+											</Node>
+											<Node id="11" score="-0.08113654">
+												<SimplePredicate field="SMS_L30D_SEND_CNT" operator="greaterOrEqual" value="11.5"/>
+											</Node>
+										</Node>
+									</Node>
+									<Node id="3" defaultChild="6">
+										<SimplePredicate field="SCR_CELL_180_CALLING_SUBTTL" operator="greaterOrEqual" value="32.415"/>
+										<Node id="6" defaultChild="12">
+											<SimplePredicate field="SCR_CELL_CALLING_CTT_DAYS_CNT" operator="lessThan" value="113.5"/>
+											<Node id="12" score="-0.07614785">
+												<SimplePredicate field="SCR_CELL_90DAY_CALL_TTL_TIME" operator="lessThan" value="30573.0"/>
+											</Node>
+											<Node id="13" score="-0.030825386">
+												<SimplePredicate field="SCR_CELL_90DAY_CALL_TTL_TIME" operator="greaterOrEqual" value="30573.0"/>
+											</Node>
+										</Node>
+										<Node id="7" defaultChild="14">
+											<SimplePredicate field="SCR_CELL_CALLING_CTT_DAYS_CNT" operator="greaterOrEqual" value="113.5"/>
+											<Node id="14" score="-0.09038207">
+												<SimplePredicate field="SMS_L30D_TOTAL_CNT" operator="lessThan" value="87.5"/>
+											</Node>
+											<Node id="15" score="-0.06817811">
+												<SimplePredicate field="SMS_L30D_TOTAL_CNT" operator="greaterOrEqual" value="87.5"/>
+											</Node>
+										</Node>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="10">
+							<True/>
+							<TreeModel functionName="regression" missingValueStrategy="defaultChild" splitCharacteristic="binarySplit" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="PHONE_USE_MTH"/>
+									<MiningField name="SCR_CELL_CALLED_CTT_DAYS_CNT"/>
+									<MiningField name="SCR_CELL_180_CALLING_SUBTTL"/>
+									<MiningField name="SMS_L150D_TTL_PPL"/>
+									<MiningField name="SMS_L30D_TOTAL_CNT"/>
+								</MiningSchema>
+								<Node id="1" defaultChild="2">
+									<True/>
+									<Node id="2" defaultChild="4">
+										<SimplePredicate field="SCR_CELL_180_CALLING_SUBTTL" operator="lessThan" value="32.415"/>
+										<Node id="4" defaultChild="8">
+											<SimplePredicate field="PHONE_USE_MTH" operator="lessThan" value="24.5"/>
+											<Node id="8" score="-0.094403446">
+												<SimplePredicate field="SMS_L30D_TOTAL_CNT" operator="lessThan" value="793.5"/>
+											</Node>
+											<Node id="9" score="-0.07834134">
+												<SimplePredicate field="SMS_L30D_TOTAL_CNT" operator="greaterOrEqual" value="793.5"/>
+											</Node>
+										</Node>
+										<Node id="5" defaultChild="10">
+											<SimplePredicate field="PHONE_USE_MTH" operator="greaterOrEqual" value="24.5"/>
+											<Node id="10" score="-0.08759632">
+												<SimplePredicate field="SMS_L150D_TTL_PPL" operator="lessThan" value="29.5"/>
+											</Node>
+											<Node id="11" score="-0.060986027">
+												<SimplePredicate field="SMS_L150D_TTL_PPL" operator="greaterOrEqual" value="29.5"/>
+											</Node>
+										</Node>
+									</Node>
+									<Node id="3" defaultChild="6">
+										<SimplePredicate field="SCR_CELL_180_CALLING_SUBTTL" operator="greaterOrEqual" value="32.415"/>
+										<Node id="6" defaultChild="12">
+											<SimplePredicate field="SCR_CELL_CALLED_CTT_DAYS_CNT" operator="lessThan" value="124.5"/>
+											<Node id="12" score="-0.0745004">
+												<SimplePredicate field="SMS_L150D_TTL_PPL" operator="lessThan" value="11.5"/>
+											</Node>
+											<Node id="13" score="-0.010158415">
+												<SimplePredicate field="SMS_L150D_TTL_PPL" operator="greaterOrEqual" value="11.5"/>
+											</Node>
+										</Node>
+										<Node id="7" defaultChild="14">
+											<SimplePredicate field="SCR_CELL_CALLED_CTT_DAYS_CNT" operator="greaterOrEqual" value="124.5"/>
+											<Node id="14" score="-0.08485217">
+												<SimplePredicate field="SCR_CELL_180_CALLING_SUBTTL" operator="lessThan" value="461.08502"/>
+											</Node>
+											<Node id="15" score="-0.06304009">
+												<SimplePredicate field="SCR_CELL_180_CALLING_SUBTTL" operator="greaterOrEqual" value="461.08502"/>
+											</Node>
+										</Node>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="11">
+							<True/>
+							<TreeModel functionName="regression" missingValueStrategy="defaultChild" splitCharacteristic="binarySplit" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="SCR_CELL_NIGHT_CALLED_TTL_TIME"/>
+									<MiningField name="SCR_CELL_EVN_CALL_TTL_TIME"/>
+									<MiningField name="SMS_L150D_TTL_PPL"/>
+									<MiningField name="SMS_L30D_SEND_CNT"/>
+									<MiningField name="SMS_L30D_TOTAL_CNT"/>
+									<MiningField name="SCR_CELL_PH_USE_MONS"/>
+								</MiningSchema>
+								<Node id="1" defaultChild="2">
+									<True/>
+									<Node id="2" defaultChild="4">
+										<SimplePredicate field="SCR_CELL_PH_USE_MONS" operator="lessThan" value="6.5"/>
+										<Node id="4" defaultChild="8">
+											<SimplePredicate field="SCR_CELL_EVN_CALL_TTL_TIME" operator="lessThan" value="3274.5"/>
+											<Node id="8" score="-0.085296065">
+												<SimplePredicate field="SCR_CELL_NIGHT_CALLED_TTL_TIME" operator="lessThan" value="6763.5"/>
+											</Node>
+											<Node id="9" score="-0.09626577">
+												<SimplePredicate field="SCR_CELL_NIGHT_CALLED_TTL_TIME" operator="greaterOrEqual" value="6763.5"/>
+											</Node>
+										</Node>
+										<Node id="5" defaultChild="10">
+											<SimplePredicate field="SCR_CELL_EVN_CALL_TTL_TIME" operator="greaterOrEqual" value="3274.5"/>
+											<Node id="10" score="-0.08562229">
+												<SimplePredicate field="SMS_L30D_SEND_CNT" operator="lessThan" value="1820.0"/>
+											</Node>
+											<Node id="11" score="0.01111546">
+												<SimplePredicate field="SMS_L30D_SEND_CNT" operator="greaterOrEqual" value="1820.0"/>
+											</Node>
+										</Node>
+									</Node>
+									<Node id="3" defaultChild="6">
+										<SimplePredicate field="SCR_CELL_PH_USE_MONS" operator="greaterOrEqual" value="6.5"/>
+										<Node id="6" defaultChild="12">
+											<SimplePredicate field="SMS_L150D_TTL_PPL" operator="lessThan" value="6.5"/>
+											<Node id="12" score="-0.094694994">
+												<SimplePredicate field="SCR_CELL_EVN_CALL_TTL_TIME" operator="lessThan" value="4358.5"/>
+											</Node>
+											<Node id="13" score="-0.06990252">
+												<SimplePredicate field="SCR_CELL_EVN_CALL_TTL_TIME" operator="greaterOrEqual" value="4358.5"/>
+											</Node>
+										</Node>
+										<Node id="7" defaultChild="14">
+											<SimplePredicate field="SMS_L150D_TTL_PPL" operator="greaterOrEqual" value="6.5"/>
+											<Node id="14" score="-0.084231734">
+												<SimplePredicate field="SMS_L30D_TOTAL_CNT" operator="lessThan" value="18.5"/>
+											</Node>
+											<Node id="15" score="-0.062728345">
+												<SimplePredicate field="SMS_L30D_TOTAL_CNT" operator="greaterOrEqual" value="18.5"/>
+											</Node>
+										</Node>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="12">
+							<True/>
+							<TreeModel functionName="regression" missingValueStrategy="defaultChild" splitCharacteristic="binarySplit" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="SCR_CELL_180_CALLING_SUBTTL"/>
+									<MiningField name="SCR_CELL_CALLING_CTT_DAYS_CNT"/>
+									<MiningField name="SCR_CELL_AFTN_CALLING_TTL_TIME"/>
+									<MiningField name="SCR_CELL_EVN_CALL_TTL_TIME"/>
+									<MiningField name="SMS_L30D_SEND_CNT"/>
+								</MiningSchema>
+								<Node id="1" defaultChild="2">
+									<True/>
+									<Node id="2" defaultChild="4">
+										<SimplePredicate field="SCR_CELL_180_CALLING_SUBTTL" operator="lessThan" value="32.415"/>
+										<Node id="4" defaultChild="8">
+											<SimplePredicate field="SCR_CELL_EVN_CALL_TTL_TIME" operator="lessThan" value="3259.5"/>
+											<Node id="8" score="-0.083810374">
+												<SimplePredicate field="SCR_CELL_CALLING_CTT_DAYS_CNT" operator="lessThan" value="138.5"/>
+											</Node>
+											<Node id="9" score="-0.09404435">
+												<SimplePredicate field="SCR_CELL_CALLING_CTT_DAYS_CNT" operator="greaterOrEqual" value="138.5"/>
+											</Node>
+										</Node>
+										<Node id="5" defaultChild="10">
+											<SimplePredicate field="SCR_CELL_EVN_CALL_TTL_TIME" operator="greaterOrEqual" value="3259.5"/>
+											<Node id="10" score="-0.07977025">
+												<SimplePredicate field="SMS_L30D_SEND_CNT" operator="lessThan" value="2094.0"/>
+											</Node>
+											<Node id="11" score="-0.00957196">
+												<SimplePredicate field="SMS_L30D_SEND_CNT" operator="greaterOrEqual" value="2094.0"/>
+											</Node>
+										</Node>
+									</Node>
+									<Node id="3" defaultChild="6">
+										<SimplePredicate field="SCR_CELL_180_CALLING_SUBTTL" operator="greaterOrEqual" value="32.415"/>
+										<Node id="6" defaultChild="12">
+											<SimplePredicate field="SCR_CELL_CALLING_CTT_DAYS_CNT" operator="lessThan" value="113.5"/>
+											<Node id="12" score="-0.06285147">
+												<SimplePredicate field="SCR_CELL_AFTN_CALLING_TTL_TIME" operator="lessThan" value="12252.0"/>
+											</Node>
+											<Node id="13" score="0.014823689">
+												<SimplePredicate field="SCR_CELL_AFTN_CALLING_TTL_TIME" operator="greaterOrEqual" value="12252.0"/>
+											</Node>
+										</Node>
+										<Node id="7" defaultChild="14">
+											<SimplePredicate field="SCR_CELL_CALLING_CTT_DAYS_CNT" operator="greaterOrEqual" value="113.5"/>
+											<Node id="14" score="-0.08521136">
+												<SimplePredicate field="SCR_CELL_EVN_CALL_TTL_TIME" operator="lessThan" value="1934.5"/>
+											</Node>
+											<Node id="15" score="-0.060761075">
+												<SimplePredicate field="SCR_CELL_EVN_CALL_TTL_TIME" operator="greaterOrEqual" value="1934.5"/>
+											</Node>
+										</Node>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="13">
+							<True/>
+							<TreeModel functionName="regression" missingValueStrategy="defaultChild" splitCharacteristic="binarySplit" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="PHONE_USE_MTH"/>
+									<MiningField name="SCR_CELL_EVN_CALL_TTL_TIME"/>
+									<MiningField name="SCR_CELL_CALL_LSTM2_CONTACTS_CNT"/>
+									<MiningField name="SMS_L30D_TOTAL_CNT"/>
+									<MiningField name="sms_l90d_total_cnt"/>
+									<MiningField name="TRC_LSM1_AVG_PLAN_AMT"/>
+								</MiningSchema>
+								<Node id="1" defaultChild="2">
+									<True/>
+									<Node id="2" defaultChild="4">
+										<SimplePredicate field="PHONE_USE_MTH" operator="lessThan" value="6.5"/>
+										<Node id="4" defaultChild="8">
+											<SimplePredicate field="SMS_L30D_TOTAL_CNT" operator="lessThan" value="818.0"/>
+											<Node id="8" score="-0.083539724">
+												<SimplePredicate field="TRC_LSM1_AVG_PLAN_AMT" operator="lessThan" value="129.25"/>
+											</Node>
+											<Node id="9" score="-0.092022754">
+												<SimplePredicate field="TRC_LSM1_AVG_PLAN_AMT" operator="greaterOrEqual" value="129.25"/>
+											</Node>
+										</Node>
+										<Node id="5" defaultChild="10">
+											<SimplePredicate field="SMS_L30D_TOTAL_CNT" operator="greaterOrEqual" value="818.0"/>
+											<Node id="10" score="-0.014306231">
+												<SimplePredicate field="SMS_L30D_TOTAL_CNT" operator="lessThan" value="916.5"/>
+											</Node>
+											<Node id="11" score="-0.07572544">
+												<SimplePredicate field="SMS_L30D_TOTAL_CNT" operator="greaterOrEqual" value="916.5"/>
+											</Node>
+										</Node>
+									</Node>
+									<Node id="3" defaultChild="6">
+										<SimplePredicate field="PHONE_USE_MTH" operator="greaterOrEqual" value="6.5"/>
+										<Node id="6" defaultChild="12">
+											<SimplePredicate field="sms_l90d_total_cnt" operator="lessThan" value="33.5"/>
+											<Node id="12" score="-0.03510022">
+												<SimplePredicate field="SCR_CELL_CALL_LSTM2_CONTACTS_CNT" operator="lessThan" value="9.5"/>
+											</Node>
+											<Node id="13" score="-0.08814898">
+												<SimplePredicate field="SCR_CELL_CALL_LSTM2_CONTACTS_CNT" operator="greaterOrEqual" value="9.5"/>
+											</Node>
+										</Node>
+										<Node id="7" defaultChild="14">
+											<SimplePredicate field="sms_l90d_total_cnt" operator="greaterOrEqual" value="33.5"/>
+											<Node id="14" score="-0.07571601">
+												<SimplePredicate field="SCR_CELL_EVN_CALL_TTL_TIME" operator="lessThan" value="1070.5"/>
+											</Node>
+											<Node id="15" score="-0.054713793">
+												<SimplePredicate field="SCR_CELL_EVN_CALL_TTL_TIME" operator="greaterOrEqual" value="1070.5"/>
+											</Node>
+										</Node>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="14">
+							<True/>
+							<TreeModel functionName="regression" missingValueStrategy="defaultChild" splitCharacteristic="binarySplit" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="PHONE_USE_MTH"/>
+									<MiningField name="SCR_CELL_CALLING_CTT_DAYS_CNT"/>
+									<MiningField name="SCR_CELL_EVN_CALL_TTL_TIME"/>
+									<MiningField name="SMS_L150D_TTL_PPL"/>
+									<MiningField name="SMS_L30D_TOTAL_CNT"/>
+									<MiningField name="SCR_CELL_SMS_LSTM3_SEND_CNT"/>
+									<MiningField name="TRC_LSM1_AVG_PLAN_AMT"/>
+								</MiningSchema>
+								<Node id="1" defaultChild="2">
+									<True/>
+									<Node id="2" defaultChild="4">
+										<SimplePredicate field="PHONE_USE_MTH" operator="lessThan" value="8.5"/>
+										<Node id="4" defaultChild="8">
+											<SimplePredicate field="SMS_L30D_TOTAL_CNT" operator="lessThan" value="793.5"/>
+											<Node id="8" score="-0.080482446">
+												<SimplePredicate field="TRC_LSM1_AVG_PLAN_AMT" operator="lessThan" value="119.7"/>
+											</Node>
+											<Node id="9" score="-0.08831083">
+												<SimplePredicate field="TRC_LSM1_AVG_PLAN_AMT" operator="greaterOrEqual" value="119.7"/>
+											</Node>
+										</Node>
+										<Node id="5" defaultChild="10">
+											<SimplePredicate field="SMS_L30D_TOTAL_CNT" operator="greaterOrEqual" value="793.5"/>
+											<Node id="10" score="0.03678049">
+												<SimplePredicate field="SCR_CELL_SMS_LSTM3_SEND_CNT" operator="lessThan" value="999.5"/>
+											</Node>
+											<Node id="11" score="-0.070003256">
+												<SimplePredicate field="SCR_CELL_SMS_LSTM3_SEND_CNT" operator="greaterOrEqual" value="999.5"/>
+											</Node>
+										</Node>
+									</Node>
+									<Node id="3" defaultChild="6">
+										<SimplePredicate field="PHONE_USE_MTH" operator="greaterOrEqual" value="8.5"/>
+										<Node id="6" defaultChild="12">
+											<SimplePredicate field="SMS_L150D_TTL_PPL" operator="lessThan" value="14.5"/>
+											<Node id="12" score="-0.07992115">
+												<SimplePredicate field="SCR_CELL_EVN_CALL_TTL_TIME" operator="lessThan" value="3169.5"/>
+											</Node>
+											<Node id="13" score="-0.056866534">
+												<SimplePredicate field="SCR_CELL_EVN_CALL_TTL_TIME" operator="greaterOrEqual" value="3169.5"/>
+											</Node>
+										</Node>
+										<Node id="7" defaultChild="14">
+											<SimplePredicate field="SMS_L150D_TTL_PPL" operator="greaterOrEqual" value="14.5"/>
+											<Node id="14" score="-0.023884764">
+												<SimplePredicate field="SCR_CELL_CALLING_CTT_DAYS_CNT" operator="lessThan" value="113.5"/>
+											</Node>
+											<Node id="15" score="-0.061258797">
+												<SimplePredicate field="SCR_CELL_CALLING_CTT_DAYS_CNT" operator="greaterOrEqual" value="113.5"/>
+											</Node>
+										</Node>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="15">
+							<True/>
+							<TreeModel functionName="regression" missingValueStrategy="defaultChild" splitCharacteristic="binarySplit" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="SCR_CELL_CTT_DAYS_CNT"/>
+									<MiningField name="SCR_CELL_180_CALLING_SUBTTL"/>
+									<MiningField name="SCR_CELL_NIGHT_CALL_TTL_TIME"/>
+									<MiningField name="SCR_CELL_CALLING_CTT_DAYS_CNT"/>
+									<MiningField name="SCR_CELL_EVN_CALL_TTL_TIME"/>
+									<MiningField name="SMS_L30D_TOTAL_CNT"/>
+								</MiningSchema>
+								<Node id="1" defaultChild="2">
+									<True/>
+									<Node id="2" defaultChild="4">
+										<SimplePredicate field="SCR_CELL_180_CALLING_SUBTTL" operator="lessThan" value="34.67"/>
+										<Node id="4" defaultChild="8">
+											<SimplePredicate field="SCR_CELL_EVN_CALL_TTL_TIME" operator="lessThan" value="3259.5"/>
+											<Node id="8" score="-0.07686246">
+												<SimplePredicate field="SCR_CELL_NIGHT_CALL_TTL_TIME" operator="lessThan" value="9703.0"/>
+											</Node>
+											<Node id="9" score="-0.08912081">
+												<SimplePredicate field="SCR_CELL_NIGHT_CALL_TTL_TIME" operator="greaterOrEqual" value="9703.0"/>
+											</Node>
+										</Node>
+										<Node id="5" defaultChild="10">
+											<SimplePredicate field="SCR_CELL_EVN_CALL_TTL_TIME" operator="greaterOrEqual" value="3259.5"/>
+											<Node id="10" score="-0.07145844">
+												<SimplePredicate field="SMS_L30D_TOTAL_CNT" operator="lessThan" value="1786.5"/>
+											</Node>
+											<Node id="11" score="-0.0075601777">
+												<SimplePredicate field="SMS_L30D_TOTAL_CNT" operator="greaterOrEqual" value="1786.5"/>
+											</Node>
+										</Node>
+									</Node>
+									<Node id="3" defaultChild="6">
+										<SimplePredicate field="SCR_CELL_180_CALLING_SUBTTL" operator="greaterOrEqual" value="34.67"/>
+										<Node id="6" defaultChild="12">
+											<SimplePredicate field="SCR_CELL_EVN_CALL_TTL_TIME" operator="lessThan" value="559.0"/>
+											<Node id="12" score="-0.037340373">
+												<SimplePredicate field="SCR_CELL_CTT_DAYS_CNT" operator="lessThan" value="126.5"/>
+											</Node>
+											<Node id="13" score="-0.08668159">
+												<SimplePredicate field="SCR_CELL_CTT_DAYS_CNT" operator="greaterOrEqual" value="126.5"/>
+											</Node>
+										</Node>
+										<Node id="7" defaultChild="14">
+											<SimplePredicate field="SCR_CELL_EVN_CALL_TTL_TIME" operator="greaterOrEqual" value="559.0"/>
+											<Node id="14" score="-0.031279042">
+												<SimplePredicate field="SCR_CELL_CALLING_CTT_DAYS_CNT" operator="lessThan" value="146.5"/>
+											</Node>
+											<Node id="15" score="-0.06252133">
+												<SimplePredicate field="SCR_CELL_CALLING_CTT_DAYS_CNT" operator="greaterOrEqual" value="146.5"/>
+											</Node>
+										</Node>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="16">
+							<True/>
+							<TreeModel functionName="regression" missingValueStrategy="defaultChild" splitCharacteristic="binarySplit" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="SCR_CELL_CALLED_CTT_DAYS_CNT"/>
+									<MiningField name="SCR_CELL_180_CALLING_SUBTTL"/>
+									<MiningField name="SMS_L150D_TTL_PPL"/>
+									<MiningField name="SMS_L30D_TOTAL_CNT"/>
+									<MiningField name="sms_l90d_total_cnt"/>
+									<MiningField name="SCR_CELL_PH_USE_MONS"/>
+								</MiningSchema>
+								<Node id="1" defaultChild="2">
+									<True/>
+									<Node id="2" defaultChild="4">
+										<SimplePredicate field="SCR_CELL_180_CALLING_SUBTTL" operator="lessThan" value="32.36"/>
+										<Node id="4" defaultChild="8">
+											<SimplePredicate field="SCR_CELL_PH_USE_MONS" operator="lessThan" value="9.5"/>
+											<Node id="8" score="-0.079278514">
+												<SimplePredicate field="SMS_L30D_TOTAL_CNT" operator="lessThan" value="793.5"/>
+											</Node>
+											<Node id="9" score="-0.060064416">
+												<SimplePredicate field="SMS_L30D_TOTAL_CNT" operator="greaterOrEqual" value="793.5"/>
+											</Node>
+										</Node>
+										<Node id="5" defaultChild="10">
+											<SimplePredicate field="SCR_CELL_PH_USE_MONS" operator="greaterOrEqual" value="9.5"/>
+											<Node id="10" score="-0.070120536">
+												<SimplePredicate field="SMS_L150D_TTL_PPL" operator="lessThan" value="29.5"/>
+											</Node>
+											<Node id="11" score="-0.04343691">
+												<SimplePredicate field="SMS_L150D_TTL_PPL" operator="greaterOrEqual" value="29.5"/>
+											</Node>
+										</Node>
+									</Node>
+									<Node id="3" defaultChild="6">
+										<SimplePredicate field="SCR_CELL_180_CALLING_SUBTTL" operator="greaterOrEqual" value="32.36"/>
+										<Node id="6" defaultChild="12">
+											<SimplePredicate field="SMS_L30D_TOTAL_CNT" operator="lessThan" value="50.5"/>
+											<Node id="12" score="-0.0019172769">
+												<SimplePredicate field="SCR_CELL_CALLED_CTT_DAYS_CNT" operator="lessThan" value="75.5"/>
+											</Node>
+											<Node id="13" score="-0.067521214">
+												<SimplePredicate field="SCR_CELL_CALLED_CTT_DAYS_CNT" operator="greaterOrEqual" value="75.5"/>
+											</Node>
+										</Node>
+										<Node id="7" defaultChild="14">
+											<SimplePredicate field="SMS_L30D_TOTAL_CNT" operator="greaterOrEqual" value="50.5"/>
+											<Node id="14" score="0.0450582">
+												<SimplePredicate field="sms_l90d_total_cnt" operator="lessThan" value="129.5"/>
+											</Node>
+											<Node id="15" score="-0.04528067">
+												<SimplePredicate field="sms_l90d_total_cnt" operator="greaterOrEqual" value="129.5"/>
+											</Node>
+										</Node>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="17">
+							<True/>
+							<TreeModel functionName="regression" missingValueStrategy="defaultChild" splitCharacteristic="binarySplit" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="PHONE_USE_MTH"/>
+									<MiningField name="SCR_CELL_NIGHT_CALL_TTL_TIME"/>
+									<MiningField name="SCR_CELL_CALLING_CTT_DAYS_CNT"/>
+									<MiningField name="SCR_CELL_EVN_CALL_TTL_TIME"/>
+									<MiningField name="SMS_L150D_TTL_PPL"/>
+									<MiningField name="sms_l90d_send_cnt"/>
+								</MiningSchema>
+								<Node id="1" defaultChild="2">
+									<True/>
+									<Node id="2" defaultChild="4">
+										<SimplePredicate field="PHONE_USE_MTH" operator="lessThan" value="8.5"/>
+										<Node id="4" defaultChild="8">
+											<SimplePredicate field="SCR_CELL_EVN_CALL_TTL_TIME" operator="lessThan" value="3274.5"/>
+											<Node id="8" score="-0.06940572">
+												<SimplePredicate field="SCR_CELL_NIGHT_CALL_TTL_TIME" operator="lessThan" value="4033.5"/>
+											</Node>
+											<Node id="9" score="-0.08301084">
+												<SimplePredicate field="SCR_CELL_NIGHT_CALL_TTL_TIME" operator="greaterOrEqual" value="4033.5"/>
+											</Node>
+										</Node>
+										<Node id="5" defaultChild="10">
+											<SimplePredicate field="SCR_CELL_EVN_CALL_TTL_TIME" operator="greaterOrEqual" value="3274.5"/>
+											<Node id="10" score="-0.07454686">
+												<SimplePredicate field="SMS_L150D_TTL_PPL" operator="lessThan" value="35.5"/>
+											</Node>
+											<Node id="11" score="-0.052667804">
+												<SimplePredicate field="SMS_L150D_TTL_PPL" operator="greaterOrEqual" value="35.5"/>
+											</Node>
+										</Node>
+									</Node>
+									<Node id="3" defaultChild="6">
+										<SimplePredicate field="PHONE_USE_MTH" operator="greaterOrEqual" value="8.5"/>
+										<Node id="6" defaultChild="12">
+											<SimplePredicate field="SCR_CELL_EVN_CALL_TTL_TIME" operator="lessThan" value="1070.5"/>
+											<Node id="12" score="-0.08203553">
+												<SimplePredicate field="sms_l90d_send_cnt" operator="lessThan" value="50.5"/>
+											</Node>
+											<Node id="13" score="-0.060297217">
+												<SimplePredicate field="sms_l90d_send_cnt" operator="greaterOrEqual" value="50.5"/>
+											</Node>
+										</Node>
+										<Node id="7" defaultChild="14">
+											<SimplePredicate field="SCR_CELL_EVN_CALL_TTL_TIME" operator="greaterOrEqual" value="1070.5"/>
+											<Node id="14" score="-0.030504076">
+												<SimplePredicate field="SCR_CELL_CALLING_CTT_DAYS_CNT" operator="lessThan" value="146.5"/>
+											</Node>
+											<Node id="15" score="-0.061648156">
+												<SimplePredicate field="SCR_CELL_CALLING_CTT_DAYS_CNT" operator="greaterOrEqual" value="146.5"/>
+											</Node>
+										</Node>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="18">
+							<True/>
+							<TreeModel functionName="regression" missingValueStrategy="defaultChild" splitCharacteristic="binarySplit" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="PHONE_USE_MTH"/>
+									<MiningField name="L90D_RG_CTT_TM"/>
+									<MiningField name="SCR_CELL_NIGHT_CALL_TTL_TIME"/>
+									<MiningField name="SCR_CELL_CALL_SMY_ANS_AFTN_CNT"/>
+									<MiningField name="SMS_L30D_SEND_CNT"/>
+								</MiningSchema>
+								<Node id="1" defaultChild="2">
+									<True/>
+									<Node id="2" defaultChild="4">
+										<SimplePredicate field="PHONE_USE_MTH" operator="lessThan" value="27.5"/>
+										<Node id="4" defaultChild="8">
+											<SimplePredicate field="SMS_L30D_SEND_CNT" operator="lessThan" value="1562.5"/>
+											<Node id="8" score="-0.067215055">
+												<SimplePredicate field="SCR_CELL_NIGHT_CALL_TTL_TIME" operator="lessThan" value="4944.5"/>
+											</Node>
+											<Node id="9" score="-0.07680806">
+												<SimplePredicate field="SCR_CELL_NIGHT_CALL_TTL_TIME" operator="greaterOrEqual" value="4944.5"/>
+											</Node>
+										</Node>
+										<Node id="5" defaultChild="10">
+											<SimplePredicate field="SMS_L30D_SEND_CNT" operator="greaterOrEqual" value="1562.5"/>
+											<Node id="10" score="0.023469104">
+												<SimplePredicate field="SCR_CELL_CALL_SMY_ANS_AFTN_CNT" operator="lessThan" value="322.0"/>
+											</Node>
+											<Node id="11" score="-0.06687158">
+												<SimplePredicate field="SCR_CELL_CALL_SMY_ANS_AFTN_CNT" operator="greaterOrEqual" value="322.0"/>
+											</Node>
+										</Node>
+									</Node>
+									<Node id="3" defaultChild="6">
+										<SimplePredicate field="PHONE_USE_MTH" operator="greaterOrEqual" value="27.5"/>
+										<Node id="6" defaultChild="12">
+											<SimplePredicate field="SMS_L30D_SEND_CNT" operator="lessThan" value="6.5"/>
+											<Node id="12" score="-0.012924509">
+												<SimplePredicate field="PHONE_USE_MTH" operator="lessThan" value="30.5"/>
+											</Node>
+											<Node id="13" score="-0.07891078">
+												<SimplePredicate field="PHONE_USE_MTH" operator="greaterOrEqual" value="30.5"/>
+											</Node>
+										</Node>
+										<Node id="7" defaultChild="14">
+											<SimplePredicate field="SMS_L30D_SEND_CNT" operator="greaterOrEqual" value="6.5"/>
+											<Node id="14" score="-0.059924714">
+												<SimplePredicate field="L90D_RG_CTT_TM" operator="lessThan" value="10596.5"/>
+											</Node>
+											<Node id="15" score="-0.03586638">
+												<SimplePredicate field="L90D_RG_CTT_TM" operator="greaterOrEqual" value="10596.5"/>
+											</Node>
+										</Node>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="19">
+							<True/>
+							<TreeModel functionName="regression" missingValueStrategy="defaultChild" splitCharacteristic="binarySplit" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="L90D_RG_CTT_TM"/>
+									<MiningField name="SCR_CELL_180_CALLING_SUBTTL"/>
+									<MiningField name="SCR_CELL_DAY_CALLING_TTL_TIME"/>
+									<MiningField name="SCR_CELL_CALL_LSTM2_CONTACTS_CNT"/>
+									<MiningField name="SMS_L150D_TTL_PPL"/>
+									<MiningField name="TRC_LSM1_AVG_TOTAL_AMT"/>
+									<MiningField name="TRC_LSM5_TOTAL_AMT"/>
+								</MiningSchema>
+								<Node id="1" defaultChild="2">
+									<True/>
+									<Node id="2" defaultChild="4">
+										<SimplePredicate field="SCR_CELL_180_CALLING_SUBTTL" operator="lessThan" value="31.45"/>
+										<Node id="4" defaultChild="8">
+											<SimplePredicate field="L90D_RG_CTT_TM" operator="lessThan" value="11018.0"/>
+											<Node id="8" score="-0.069783196">
+												<SimplePredicate field="SCR_CELL_CALL_LSTM2_CONTACTS_CNT" operator="lessThan" value="167.5"/>
+											</Node>
+											<Node id="9" score="-0.085383564">
+												<SimplePredicate field="SCR_CELL_CALL_LSTM2_CONTACTS_CNT" operator="greaterOrEqual" value="167.5"/>
+											</Node>
+										</Node>
+										<Node id="5" defaultChild="10">
+											<SimplePredicate field="L90D_RG_CTT_TM" operator="greaterOrEqual" value="11018.0"/>
+											<Node id="10" score="-0.032836296">
+												<SimplePredicate field="SCR_CELL_DAY_CALLING_TTL_TIME" operator="lessThan" value="28339.0"/>
+											</Node>
+											<Node id="11" score="-0.06693722">
+												<SimplePredicate field="SCR_CELL_DAY_CALLING_TTL_TIME" operator="greaterOrEqual" value="28339.0"/>
+											</Node>
+										</Node>
+									</Node>
+									<Node id="3" defaultChild="6">
+										<SimplePredicate field="SCR_CELL_180_CALLING_SUBTTL" operator="greaterOrEqual" value="31.45"/>
+										<Node id="6" defaultChild="12">
+											<SimplePredicate field="TRC_LSM1_AVG_TOTAL_AMT" operator="lessThan" value="211.78"/>
+											<Node id="12" score="-0.072084144">
+												<SimplePredicate field="SMS_L150D_TTL_PPL" operator="lessThan" value="10.5"/>
+											</Node>
+											<Node id="13" score="-0.043443274">
+												<SimplePredicate field="SMS_L150D_TTL_PPL" operator="greaterOrEqual" value="10.5"/>
+											</Node>
+										</Node>
+										<Node id="7" defaultChild="14">
+											<SimplePredicate field="TRC_LSM1_AVG_TOTAL_AMT" operator="greaterOrEqual" value="211.78"/>
+											<Node id="14" score="0.08644327">
+												<SimplePredicate field="TRC_LSM5_TOTAL_AMT" operator="lessThan" value="865.1"/>
+											</Node>
+											<Node id="15" score="-0.039364748">
+												<SimplePredicate field="TRC_LSM5_TOTAL_AMT" operator="greaterOrEqual" value="865.1"/>
+											</Node>
+										</Node>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="20">
+							<True/>
+							<TreeModel functionName="regression" missingValueStrategy="defaultChild" splitCharacteristic="binarySplit" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="SCR_CELL_MRNG_CALLED_TIMES"/>
+									<MiningField name="SCR_CELL_EVN_CALL_TTL_TIME"/>
+									<MiningField name="SMS_L30D_TOTAL_CNT"/>
+									<MiningField name="sms_l90d_send_cnt"/>
+									<MiningField name="sms_l90d_total_cnt"/>
+									<MiningField name="SCR_CELL_PH_USE_MONS"/>
+								</MiningSchema>
+								<Node id="1" defaultChild="2">
+									<True/>
+									<Node id="2" defaultChild="4">
+										<SimplePredicate field="SCR_CELL_PH_USE_MONS" operator="lessThan" value="8.5"/>
+										<Node id="4" defaultChild="8">
+											<SimplePredicate field="SCR_CELL_EVN_CALL_TTL_TIME" operator="lessThan" value="3274.5"/>
+											<Node id="8" score="-0.05945412">
+												<SimplePredicate field="SCR_CELL_MRNG_CALLED_TIMES" operator="lessThan" value="56.5"/>
+											</Node>
+											<Node id="9" score="-0.07623965">
+												<SimplePredicate field="SCR_CELL_MRNG_CALLED_TIMES" operator="greaterOrEqual" value="56.5"/>
+											</Node>
+										</Node>
+										<Node id="5" defaultChild="10">
+											<SimplePredicate field="SCR_CELL_EVN_CALL_TTL_TIME" operator="greaterOrEqual" value="3274.5"/>
+											<Node id="10" score="-0.07263274">
+												<SimplePredicate field="SMS_L30D_TOTAL_CNT" operator="lessThan" value="46.5"/>
+											</Node>
+											<Node id="11" score="-0.046893056">
+												<SimplePredicate field="SMS_L30D_TOTAL_CNT" operator="greaterOrEqual" value="46.5"/>
+											</Node>
+										</Node>
+									</Node>
+									<Node id="3" defaultChild="6">
+										<SimplePredicate field="SCR_CELL_PH_USE_MONS" operator="greaterOrEqual" value="8.5"/>
+										<Node id="6" defaultChild="12">
+											<SimplePredicate field="SCR_CELL_EVN_CALL_TTL_TIME" operator="lessThan" value="1070.5"/>
+											<Node id="12" score="-0.075687245">
+												<SimplePredicate field="sms_l90d_send_cnt" operator="lessThan" value="50.5"/>
+											</Node>
+											<Node id="13" score="-0.051557794">
+												<SimplePredicate field="sms_l90d_send_cnt" operator="greaterOrEqual" value="50.5"/>
+											</Node>
+										</Node>
+										<Node id="7" defaultChild="14">
+											<SimplePredicate field="SCR_CELL_EVN_CALL_TTL_TIME" operator="greaterOrEqual" value="1070.5"/>
+											<Node id="14" score="-0.046111096">
+												<SimplePredicate field="sms_l90d_total_cnt" operator="lessThan" value="845.5"/>
+											</Node>
+											<Node id="15" score="-0.013505977">
+												<SimplePredicate field="sms_l90d_total_cnt" operator="greaterOrEqual" value="845.5"/>
+											</Node>
+										</Node>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="21">
+							<True/>
+							<TreeModel functionName="regression" missingValueStrategy="defaultChild" splitCharacteristic="binarySplit" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="PHONE_USE_MTH"/>
+									<MiningField name="L90D_RG_CTT_TM"/>
+									<MiningField name="SCR_CELL_CALLING_CTT_DAYS_CNT"/>
+									<MiningField name="SCR_CELL_EVN_CALL_TTL_TIME"/>
+									<MiningField name="SMS_L150D_TTL_PPL"/>
+									<MiningField name="sms_l90d_send_cnt"/>
+								</MiningSchema>
+								<Node id="1" defaultChild="2">
+									<True/>
+									<Node id="2" defaultChild="4">
+										<SimplePredicate field="PHONE_USE_MTH" operator="lessThan" value="26.5"/>
+										<Node id="4" defaultChild="8">
+											<SimplePredicate field="SCR_CELL_EVN_CALL_TTL_TIME" operator="lessThan" value="6037.0"/>
+											<Node id="8" score="-0.06155312">
+												<SimplePredicate field="SCR_CELL_CALLING_CTT_DAYS_CNT" operator="lessThan" value="135.5"/>
+											</Node>
+											<Node id="9" score="-0.07503535">
+												<SimplePredicate field="SCR_CELL_CALLING_CTT_DAYS_CNT" operator="greaterOrEqual" value="135.5"/>
+											</Node>
+										</Node>
+										<Node id="5" defaultChild="10">
+											<SimplePredicate field="SCR_CELL_EVN_CALL_TTL_TIME" operator="greaterOrEqual" value="6037.0"/>
+											<Node id="10" score="-0.0701946">
+												<SimplePredicate field="sms_l90d_send_cnt" operator="lessThan" value="61.5"/>
+											</Node>
+											<Node id="11" score="-0.04174059">
+												<SimplePredicate field="sms_l90d_send_cnt" operator="greaterOrEqual" value="61.5"/>
+											</Node>
+										</Node>
+									</Node>
+									<Node id="3" defaultChild="6">
+										<SimplePredicate field="PHONE_USE_MTH" operator="greaterOrEqual" value="26.5"/>
+										<Node id="6" score="-0.08605793">
+											<SimplePredicate field="SMS_L150D_TTL_PPL" operator="lessThan" value="3.5"/>
+										</Node>
+										<Node id="7" defaultChild="12">
+											<SimplePredicate field="SMS_L150D_TTL_PPL" operator="greaterOrEqual" value="3.5"/>
+											<Node id="12" score="-0.054604534">
+												<SimplePredicate field="L90D_RG_CTT_TM" operator="lessThan" value="10596.5"/>
+											</Node>
+											<Node id="13" score="-0.03325797">
+												<SimplePredicate field="L90D_RG_CTT_TM" operator="greaterOrEqual" value="10596.5"/>
+											</Node>
+										</Node>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="22">
+							<True/>
+							<TreeModel functionName="regression" missingValueStrategy="defaultChild" splitCharacteristic="binarySplit" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="L90D_RG_CTT_TM"/>
+									<MiningField name="SCR_CELL_DAY_CALLING_TTL_TIME"/>
+									<MiningField name="SMS_L30D_TOTAL_CNT"/>
+									<MiningField name="TRC_LSM1_AVG_PLAN_AMT"/>
+									<MiningField name="TRC_LSM5_TOTAL_AMT"/>
+									<MiningField name="SCR_CELL_PH_USE_MONS"/>
+								</MiningSchema>
+								<Node id="1" defaultChild="2">
+									<True/>
+									<Node id="2" defaultChild="4">
+										<SimplePredicate field="SCR_CELL_PH_USE_MONS" operator="lessThan" value="8.5"/>
+										<Node id="4" defaultChild="8">
+											<SimplePredicate field="SMS_L30D_TOTAL_CNT" operator="lessThan" value="793.5"/>
+											<Node id="8" score="-0.062125143">
+												<SimplePredicate field="TRC_LSM1_AVG_PLAN_AMT" operator="lessThan" value="119.7"/>
+											</Node>
+											<Node id="9" score="-0.07500087">
+												<SimplePredicate field="TRC_LSM1_AVG_PLAN_AMT" operator="greaterOrEqual" value="119.7"/>
+											</Node>
+										</Node>
+										<Node id="5" defaultChild="10">
+											<SimplePredicate field="SMS_L30D_TOTAL_CNT" operator="greaterOrEqual" value="793.5"/>
+											<Node id="10" score="-0.061990265">
+												<SimplePredicate field="TRC_LSM5_TOTAL_AMT" operator="lessThan" value="1187.645"/>
+											</Node>
+											<Node id="11" score="-0.0033999453">
+												<SimplePredicate field="TRC_LSM5_TOTAL_AMT" operator="greaterOrEqual" value="1187.645"/>
+											</Node>
+										</Node>
+									</Node>
+									<Node id="3" defaultChild="6">
+										<SimplePredicate field="SCR_CELL_PH_USE_MONS" operator="greaterOrEqual" value="8.5"/>
+										<Node id="6" defaultChild="12">
+											<SimplePredicate field="L90D_RG_CTT_TM" operator="lessThan" value="10596.5"/>
+											<Node id="12" score="-0.04163988">
+												<SimplePredicate field="SCR_CELL_PH_USE_MONS" operator="lessThan" value="52.5"/>
+											</Node>
+											<Node id="13" score="-0.06590506">
+												<SimplePredicate field="SCR_CELL_PH_USE_MONS" operator="greaterOrEqual" value="52.5"/>
+											</Node>
+										</Node>
+										<Node id="7" defaultChild="14">
+											<SimplePredicate field="L90D_RG_CTT_TM" operator="greaterOrEqual" value="10596.5"/>
+											<Node id="14" score="-0.0113010295">
+												<SimplePredicate field="SCR_CELL_DAY_CALLING_TTL_TIME" operator="lessThan" value="34733.5"/>
+											</Node>
+											<Node id="15" score="-0.04608289">
+												<SimplePredicate field="SCR_CELL_DAY_CALLING_TTL_TIME" operator="greaterOrEqual" value="34733.5"/>
+											</Node>
+										</Node>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="23">
+							<True/>
+							<TreeModel functionName="regression" missingValueStrategy="defaultChild" splitCharacteristic="binarySplit" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="PHONE_USE_MTH"/>
+									<MiningField name="SCR_CELL_AFTN_CALLING_TTL_TIME"/>
+									<MiningField name="SMS_L150D_TTL_PPL"/>
+									<MiningField name="SMS_L30D_SEND_CNT"/>
+									<MiningField name="sms_l90d_total_cnt"/>
+									<MiningField name="TRC_LSM1_AVG_PLAN_AMT"/>
+								</MiningSchema>
+								<Node id="1" defaultChild="2">
+									<True/>
+									<Node id="2" defaultChild="4">
+										<SimplePredicate field="PHONE_USE_MTH" operator="lessThan" value="6.5"/>
+										<Node id="4" defaultChild="8">
+											<SimplePredicate field="TRC_LSM1_AVG_PLAN_AMT" operator="lessThan" value="119.7"/>
+											<Node id="8" score="-0.06797203">
+												<SimplePredicate field="sms_l90d_total_cnt" operator="lessThan" value="38.5"/>
+											</Node>
+											<Node id="9" score="-0.051252387">
+												<SimplePredicate field="sms_l90d_total_cnt" operator="greaterOrEqual" value="38.5"/>
+											</Node>
+										</Node>
+										<Node id="5" defaultChild="10">
+											<SimplePredicate field="TRC_LSM1_AVG_PLAN_AMT" operator="greaterOrEqual" value="119.7"/>
+											<Node id="10" score="-0.07441094">
+												<SimplePredicate field="SMS_L30D_SEND_CNT" operator="lessThan" value="1031.5"/>
+											</Node>
+											<Node id="11" score="-0.034070954">
+												<SimplePredicate field="SMS_L30D_SEND_CNT" operator="greaterOrEqual" value="1031.5"/>
+											</Node>
+										</Node>
+									</Node>
+									<Node id="3" defaultChild="6">
+										<SimplePredicate field="PHONE_USE_MTH" operator="greaterOrEqual" value="6.5"/>
+										<Node id="6" defaultChild="12">
+											<SimplePredicate field="sms_l90d_total_cnt" operator="lessThan" value="66.5"/>
+											<Node id="12" score="-0.051692292">
+												<SimplePredicate field="SCR_CELL_AFTN_CALLING_TTL_TIME" operator="lessThan" value="17759.5"/>
+											</Node>
+											<Node id="13" score="-0.076573275">
+												<SimplePredicate field="SCR_CELL_AFTN_CALLING_TTL_TIME" operator="greaterOrEqual" value="17759.5"/>
+											</Node>
+										</Node>
+										<Node id="7" defaultChild="14">
+											<SimplePredicate field="sms_l90d_total_cnt" operator="greaterOrEqual" value="66.5"/>
+											<Node id="14" score="-0.07083567">
+												<SimplePredicate field="SMS_L150D_TTL_PPL" operator="lessThan" value="6.5"/>
+											</Node>
+											<Node id="15" score="-0.02705228">
+												<SimplePredicate field="SMS_L150D_TTL_PPL" operator="greaterOrEqual" value="6.5"/>
+											</Node>
+										</Node>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="24">
+							<True/>
+							<TreeModel functionName="regression" missingValueStrategy="defaultChild" splitCharacteristic="binarySplit" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="SCR_CELL_180_CALLING_SUBTTL"/>
+									<MiningField name="SCR_CELL_NIGHT_CALL_TTL_TIME"/>
+									<MiningField name="SCR_CELL_CALLING_CTT_DAYS_CNT"/>
+									<MiningField name="SCR_CELL_AFTN_CALLING_TTL_TIME"/>
+									<MiningField name="SCR_CELL_NIGHT_CALLING_TTL_TIME"/>
+									<MiningField name="SCR_CELL_EVN_CALL_TTL_TIME"/>
+								</MiningSchema>
+								<Node id="1" defaultChild="2">
+									<True/>
+									<Node id="2" defaultChild="4">
+										<SimplePredicate field="SCR_CELL_180_CALLING_SUBTTL" operator="lessThan" value="32.415"/>
+										<Node id="4" defaultChild="8">
+											<SimplePredicate field="SCR_CELL_EVN_CALL_TTL_TIME" operator="lessThan" value="3472.0"/>
+											<Node id="8" score="-0.05406855">
+												<SimplePredicate field="SCR_CELL_NIGHT_CALL_TTL_TIME" operator="lessThan" value="6104.0"/>
+											</Node>
+											<Node id="9" score="-0.070982404">
+												<SimplePredicate field="SCR_CELL_NIGHT_CALL_TTL_TIME" operator="greaterOrEqual" value="6104.0"/>
+											</Node>
+										</Node>
+										<Node id="5" defaultChild="10">
+											<SimplePredicate field="SCR_CELL_EVN_CALL_TTL_TIME" operator="greaterOrEqual" value="3472.0"/>
+											<Node id="10" score="-0.03947978">
+												<SimplePredicate field="SCR_CELL_NIGHT_CALLING_TTL_TIME" operator="lessThan" value="20425.0"/>
+											</Node>
+											<Node id="11" score="-0.07217919">
+												<SimplePredicate field="SCR_CELL_NIGHT_CALLING_TTL_TIME" operator="greaterOrEqual" value="20425.0"/>
+											</Node>
+										</Node>
+									</Node>
+									<Node id="3" defaultChild="6">
+										<SimplePredicate field="SCR_CELL_180_CALLING_SUBTTL" operator="greaterOrEqual" value="32.415"/>
+										<Node id="6" defaultChild="12">
+											<SimplePredicate field="SCR_CELL_EVN_CALL_TTL_TIME" operator="lessThan" value="323.5"/>
+											<Node id="12" score="-0.010127498">
+												<SimplePredicate field="SCR_CELL_AFTN_CALLING_TTL_TIME" operator="lessThan" value="5144.5"/>
+											</Node>
+											<Node id="13" score="-0.08903467">
+												<SimplePredicate field="SCR_CELL_AFTN_CALLING_TTL_TIME" operator="greaterOrEqual" value="5144.5"/>
+											</Node>
+										</Node>
+										<Node id="7" defaultChild="14">
+											<SimplePredicate field="SCR_CELL_EVN_CALL_TTL_TIME" operator="greaterOrEqual" value="323.5"/>
+											<Node id="14" score="-0.0053439187">
+												<SimplePredicate field="SCR_CELL_CALLING_CTT_DAYS_CNT" operator="lessThan" value="131.5"/>
+											</Node>
+											<Node id="15" score="-0.04031095">
+												<SimplePredicate field="SCR_CELL_CALLING_CTT_DAYS_CNT" operator="greaterOrEqual" value="131.5"/>
+											</Node>
+										</Node>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="25">
+							<True/>
+							<TreeModel functionName="regression" missingValueStrategy="defaultChild" splitCharacteristic="binarySplit" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="PHONE_USE_MTH"/>
+									<MiningField name="SCR_CELL_MRNG_CALLED_TIMES"/>
+									<MiningField name="SCR_CELL_CALLING_CTT_DAYS_CNT"/>
+									<MiningField name="SCR_CELL_EVN_CALL_TTL_TIME"/>
+									<MiningField name="SMS_L150D_TTL_PPL"/>
+									<MiningField name="TRC_LSM1_AVG_TOTAL_AMT"/>
+								</MiningSchema>
+								<Node id="1" defaultChild="2">
+									<True/>
+									<Node id="2" defaultChild="4">
+										<SimplePredicate field="PHONE_USE_MTH" operator="lessThan" value="6.5"/>
+										<Node id="4" defaultChild="8">
+											<SimplePredicate field="SCR_CELL_MRNG_CALLED_TIMES" operator="lessThan" value="322.5"/>
+											<Node id="8" score="-0.059523743">
+												<SimplePredicate field="SMS_L150D_TTL_PPL" operator="lessThan" value="33.5"/>
+											</Node>
+											<Node id="9" score="-0.025046248">
+												<SimplePredicate field="SMS_L150D_TTL_PPL" operator="greaterOrEqual" value="33.5"/>
+											</Node>
+										</Node>
+										<Node id="5" defaultChild="10">
+											<SimplePredicate field="SCR_CELL_MRNG_CALLED_TIMES" operator="greaterOrEqual" value="322.5"/>
+											<Node id="10" score="-0.07183196">
+												<SimplePredicate field="TRC_LSM1_AVG_TOTAL_AMT" operator="lessThan" value="570.885"/>
+											</Node>
+											<Node id="11" score="-0.0048363684">
+												<SimplePredicate field="TRC_LSM1_AVG_TOTAL_AMT" operator="greaterOrEqual" value="570.885"/>
+											</Node>
+										</Node>
+									</Node>
+									<Node id="3" defaultChild="6">
+										<SimplePredicate field="PHONE_USE_MTH" operator="greaterOrEqual" value="6.5"/>
+										<Node id="6" defaultChild="12">
+											<SimplePredicate field="SCR_CELL_EVN_CALL_TTL_TIME" operator="lessThan" value="607.5"/>
+											<Node id="12" score="0.010903908">
+												<SimplePredicate field="PHONE_USE_MTH" operator="lessThan" value="17.5"/>
+											</Node>
+											<Node id="13" score="-0.061242145">
+												<SimplePredicate field="PHONE_USE_MTH" operator="greaterOrEqual" value="17.5"/>
+											</Node>
+										</Node>
+										<Node id="7" defaultChild="14">
+											<SimplePredicate field="SCR_CELL_EVN_CALL_TTL_TIME" operator="greaterOrEqual" value="607.5"/>
+											<Node id="14" score="-0.008546737">
+												<SimplePredicate field="SCR_CELL_CALLING_CTT_DAYS_CNT" operator="lessThan" value="112.5"/>
+											</Node>
+											<Node id="15" score="-0.040055018">
+												<SimplePredicate field="SCR_CELL_CALLING_CTT_DAYS_CNT" operator="greaterOrEqual" value="112.5"/>
+											</Node>
+										</Node>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="26">
+							<True/>
+							<TreeModel functionName="regression" missingValueStrategy="defaultChild" splitCharacteristic="binarySplit" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="L90D_RG_CTT_TM"/>
+									<MiningField name="SCR_CELL_CALLED_PHONE_CNT"/>
+									<MiningField name="SCR_CELL_180_CALLING_SUBTTL"/>
+									<MiningField name="SCR_CELL_DAY_CALLING_TTL_TIME"/>
+									<MiningField name="SCR_CELL_CALL_SMY_ANS_AFTN_CNT"/>
+									<MiningField name="SMS_L30D_TOTAL_CNT"/>
+									<MiningField name="TRC_LSM1_AVG_PLAN_AMT"/>
+								</MiningSchema>
+								<Node id="1" defaultChild="2">
+									<True/>
+									<Node id="2" defaultChild="4">
+										<SimplePredicate field="L90D_RG_CTT_TM" operator="lessThan" value="10183.5"/>
+										<Node id="4" defaultChild="8">
+											<SimplePredicate field="SCR_CELL_CALL_SMY_ANS_AFTN_CNT" operator="lessThan" value="558.5"/>
+											<Node id="8" score="-0.061830435">
+												<SimplePredicate field="SMS_L30D_TOTAL_CNT" operator="lessThan" value="25.5"/>
+											</Node>
+											<Node id="9" score="-0.04371475">
+												<SimplePredicate field="SMS_L30D_TOTAL_CNT" operator="greaterOrEqual" value="25.5"/>
+											</Node>
+										</Node>
+										<Node id="5" defaultChild="10">
+											<SimplePredicate field="SCR_CELL_CALL_SMY_ANS_AFTN_CNT" operator="greaterOrEqual" value="558.5"/>
+											<Node id="10" score="-0.08199559">
+												<SimplePredicate field="SCR_CELL_CALLED_PHONE_CNT" operator="lessThan" value="595.5"/>
+											</Node>
+											<Node id="11" score="-0.02821749">
+												<SimplePredicate field="SCR_CELL_CALLED_PHONE_CNT" operator="greaterOrEqual" value="595.5"/>
+											</Node>
+										</Node>
+									</Node>
+									<Node id="3" defaultChild="6">
+										<SimplePredicate field="L90D_RG_CTT_TM" operator="greaterOrEqual" value="10183.5"/>
+										<Node id="6" defaultChild="12">
+											<SimplePredicate field="SCR_CELL_DAY_CALLING_TTL_TIME" operator="lessThan" value="34672.5"/>
+											<Node id="12" score="-0.01918963">
+												<SimplePredicate field="TRC_LSM1_AVG_PLAN_AMT" operator="lessThan" value="222.61"/>
+											</Node>
+											<Node id="13" score="0.07753571">
+												<SimplePredicate field="TRC_LSM1_AVG_PLAN_AMT" operator="greaterOrEqual" value="222.61"/>
+											</Node>
+										</Node>
+										<Node id="7" defaultChild="14">
+											<SimplePredicate field="SCR_CELL_DAY_CALLING_TTL_TIME" operator="greaterOrEqual" value="34672.5"/>
+											<Node id="14" score="-0.05081227">
+												<SimplePredicate field="SCR_CELL_180_CALLING_SUBTTL" operator="lessThan" value="866.805"/>
+											</Node>
+											<Node id="15" score="0.008395099">
+												<SimplePredicate field="SCR_CELL_180_CALLING_SUBTTL" operator="greaterOrEqual" value="866.805"/>
+											</Node>
+										</Node>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="27">
+							<True/>
+							<TreeModel functionName="regression" missingValueStrategy="defaultChild" splitCharacteristic="binarySplit" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="L90D_RG_CTT_TM"/>
+									<MiningField name="SCR_CELL_MRNG_CALLED_TIMES"/>
+									<MiningField name="SCR_CELL_EVN_CALL_TTL_TIME"/>
+									<MiningField name="SCR_CELL_90DAY_CALLING_TTL_TIME"/>
+									<MiningField name="sms_l90d_send_cnt"/>
+									<MiningField name="TRC_LSM1_AVG_PLAN_AMT"/>
+								</MiningSchema>
+								<Node id="1" defaultChild="2">
+									<True/>
+									<Node id="2" defaultChild="4">
+										<SimplePredicate field="L90D_RG_CTT_TM" operator="lessThan" value="10183.5"/>
+										<Node id="4" defaultChild="8">
+											<SimplePredicate field="SCR_CELL_MRNG_CALLED_TIMES" operator="lessThan" value="193.5"/>
+											<Node id="8" score="-0.06331689">
+												<SimplePredicate field="sms_l90d_send_cnt" operator="lessThan" value="15.5"/>
+											</Node>
+											<Node id="9" score="-0.039430726">
+												<SimplePredicate field="sms_l90d_send_cnt" operator="greaterOrEqual" value="15.5"/>
+											</Node>
+										</Node>
+										<Node id="5" defaultChild="10">
+											<SimplePredicate field="SCR_CELL_MRNG_CALLED_TIMES" operator="greaterOrEqual" value="193.5"/>
+											<Node id="10" score="-0.07397788">
+												<SimplePredicate field="SCR_CELL_EVN_CALL_TTL_TIME" operator="lessThan" value="3726.5"/>
+											</Node>
+											<Node id="11" score="-0.050405543">
+												<SimplePredicate field="SCR_CELL_EVN_CALL_TTL_TIME" operator="greaterOrEqual" value="3726.5"/>
+											</Node>
+										</Node>
+									</Node>
+									<Node id="3" defaultChild="6">
+										<SimplePredicate field="L90D_RG_CTT_TM" operator="greaterOrEqual" value="10183.5"/>
+										<Node id="6" defaultChild="12">
+											<SimplePredicate field="SCR_CELL_90DAY_CALLING_TTL_TIME" operator="lessThan" value="28394.0"/>
+											<Node id="12" score="-0.020240657">
+												<SimplePredicate field="TRC_LSM1_AVG_PLAN_AMT" operator="lessThan" value="209.65"/>
+											</Node>
+											<Node id="13" score="0.072694555">
+												<SimplePredicate field="TRC_LSM1_AVG_PLAN_AMT" operator="greaterOrEqual" value="209.65"/>
+											</Node>
+										</Node>
+										<Node id="7" defaultChild="14">
+											<SimplePredicate field="SCR_CELL_90DAY_CALLING_TTL_TIME" operator="greaterOrEqual" value="28394.0"/>
+											<Node id="14" score="-0.05833403">
+												<SimplePredicate field="sms_l90d_send_cnt" operator="lessThan" value="125.5"/>
+											</Node>
+											<Node id="15" score="-0.02790781">
+												<SimplePredicate field="sms_l90d_send_cnt" operator="greaterOrEqual" value="125.5"/>
+											</Node>
+										</Node>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="28">
+							<True/>
+							<TreeModel functionName="regression" missingValueStrategy="defaultChild" splitCharacteristic="binarySplit" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="SCR_CELL_CALLED_TIMES"/>
+									<MiningField name="SCR_CELL_180_CALLING_SUBTTL"/>
+									<MiningField name="SCR_CELL_CALL_PHONE_CNT"/>
+									<MiningField name="SMS_L150D_TTL_PPL"/>
+									<MiningField name="sms_l90d_total_cnt"/>
+									<MiningField name="TRC_LSM5_TOTAL_AMT"/>
+								</MiningSchema>
+								<Node id="1" defaultChild="2">
+									<True/>
+									<Node id="2" defaultChild="4">
+										<SimplePredicate field="SCR_CELL_180_CALLING_SUBTTL" operator="lessThan" value="32.415"/>
+										<Node id="4" defaultChild="8">
+											<SimplePredicate field="sms_l90d_total_cnt" operator="lessThan" value="66.5"/>
+											<Node id="8" score="-0.049752943">
+												<SimplePredicate field="TRC_LSM5_TOTAL_AMT" operator="lessThan" value="990.23"/>
+											</Node>
+											<Node id="9" score="-0.07377767">
+												<SimplePredicate field="TRC_LSM5_TOTAL_AMT" operator="greaterOrEqual" value="990.23"/>
+											</Node>
+										</Node>
+										<Node id="5" defaultChild="10">
+											<SimplePredicate field="sms_l90d_total_cnt" operator="greaterOrEqual" value="66.5"/>
+											<Node id="10" score="-0.04953329">
+												<SimplePredicate field="TRC_LSM5_TOTAL_AMT" operator="lessThan" value="1182.52"/>
+											</Node>
+											<Node id="11" score="-0.025746772">
+												<SimplePredicate field="TRC_LSM5_TOTAL_AMT" operator="greaterOrEqual" value="1182.52"/>
+											</Node>
+										</Node>
+									</Node>
+									<Node id="3" defaultChild="6">
+										<SimplePredicate field="SCR_CELL_180_CALLING_SUBTTL" operator="greaterOrEqual" value="32.415"/>
+										<Node id="6" defaultChild="12">
+											<SimplePredicate field="SCR_CELL_CALLED_TIMES" operator="lessThan" value="1483.5"/>
+											<Node id="12" score="-0.038285017">
+												<SimplePredicate field="SMS_L150D_TTL_PPL" operator="lessThan" value="14.5"/>
+											</Node>
+											<Node id="13" score="0.004532623">
+												<SimplePredicate field="SMS_L150D_TTL_PPL" operator="greaterOrEqual" value="14.5"/>
+											</Node>
+										</Node>
+										<Node id="7" defaultChild="14">
+											<SimplePredicate field="SCR_CELL_CALLED_TIMES" operator="greaterOrEqual" value="1483.5"/>
+											<Node id="14" score="-0.07129933">
+												<SimplePredicate field="SCR_CELL_CALL_PHONE_CNT" operator="lessThan" value="871.0"/>
+											</Node>
+											<Node id="15" score="0.06543273">
+												<SimplePredicate field="SCR_CELL_CALL_PHONE_CNT" operator="greaterOrEqual" value="871.0"/>
+											</Node>
+										</Node>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="29">
+							<True/>
+							<TreeModel functionName="regression" missingValueStrategy="defaultChild" splitCharacteristic="binarySplit" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="SCR_CELL_CALLED_TIMES"/>
+									<MiningField name="SCR_CELL_CALLED_PHONE_CNT"/>
+									<MiningField name="SCR_CELL_CALLED_CTT_DAYS_CNT"/>
+									<MiningField name="SCR_CELL_180_CALLING_SUBTTL"/>
+									<MiningField name="SCR_CELL_CALLING_CTT_DAYS_CNT"/>
+									<MiningField name="SCR_CELL_EVN_CALL_TTL_TIME"/>
+								</MiningSchema>
+								<Node id="1" defaultChild="2">
+									<True/>
+									<Node id="2" defaultChild="4">
+										<SimplePredicate field="SCR_CELL_180_CALLING_SUBTTL" operator="lessThan" value="32.415"/>
+										<Node id="4" defaultChild="8">
+											<SimplePredicate field="SCR_CELL_CALLING_CTT_DAYS_CNT" operator="lessThan" value="138.5"/>
+											<Node id="8" score="-0.051309925">
+												<SimplePredicate field="SCR_CELL_CALLED_PHONE_CNT" operator="lessThan" value="152.5"/>
+											</Node>
+											<Node id="9" score="-0.01920356">
+												<SimplePredicate field="SCR_CELL_CALLED_PHONE_CNT" operator="greaterOrEqual" value="152.5"/>
+											</Node>
+										</Node>
+										<Node id="5" defaultChild="10">
+											<SimplePredicate field="SCR_CELL_CALLING_CTT_DAYS_CNT" operator="greaterOrEqual" value="138.5"/>
+											<Node id="10" score="-0.06737962">
+												<SimplePredicate field="SCR_CELL_EVN_CALL_TTL_TIME" operator="lessThan" value="3029.5"/>
+											</Node>
+											<Node id="11" score="-0.042017892">
+												<SimplePredicate field="SCR_CELL_EVN_CALL_TTL_TIME" operator="greaterOrEqual" value="3029.5"/>
+											</Node>
+										</Node>
+									</Node>
+									<Node id="3" defaultChild="6">
+										<SimplePredicate field="SCR_CELL_180_CALLING_SUBTTL" operator="greaterOrEqual" value="32.415"/>
+										<Node id="6" defaultChild="12">
+											<SimplePredicate field="SCR_CELL_EVN_CALL_TTL_TIME" operator="lessThan" value="320.5"/>
+											<Node id="12" score="0.010591601">
+												<SimplePredicate field="SCR_CELL_CALLED_TIMES" operator="lessThan" value="231.5"/>
+											</Node>
+											<Node id="13" score="-0.07812947">
+												<SimplePredicate field="SCR_CELL_CALLED_TIMES" operator="greaterOrEqual" value="231.5"/>
+											</Node>
+										</Node>
+										<Node id="7" defaultChild="14">
+											<SimplePredicate field="SCR_CELL_EVN_CALL_TTL_TIME" operator="greaterOrEqual" value="320.5"/>
+											<Node id="14" score="0.06678364">
+												<SimplePredicate field="SCR_CELL_CALLED_CTT_DAYS_CNT" operator="lessThan" value="93.5"/>
+											</Node>
+											<Node id="15" score="-0.021593256">
+												<SimplePredicate field="SCR_CELL_CALLED_CTT_DAYS_CNT" operator="greaterOrEqual" value="93.5"/>
+											</Node>
+										</Node>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="30">
+							<True/>
+							<TreeModel functionName="regression" missingValueStrategy="defaultChild" splitCharacteristic="binarySplit" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="PHONE_USE_MTH"/>
+									<MiningField name="SCR_CELL_AFTN_CALL_TTL_TIME"/>
+									<MiningField name="SCR_CELL_CALLING_CTT_DAYS_CNT"/>
+									<MiningField name="SCR_CELL_90DAY_CALL_TTL_TIME"/>
+									<MiningField name="SMS_L150D_TTL_PPL"/>
+									<MiningField name="SMS_L30D_TOTAL_CNT"/>
+									<MiningField name="TRC_LSM5_TOTAL_AMT"/>
+								</MiningSchema>
+								<Node id="1" defaultChild="2">
+									<True/>
+									<Node id="2" defaultChild="4">
+										<SimplePredicate field="PHONE_USE_MTH" operator="lessThan" value="8.5"/>
+										<Node id="4" defaultChild="8">
+											<SimplePredicate field="SMS_L30D_TOTAL_CNT" operator="lessThan" value="793.5"/>
+											<Node id="8" score="-0.04834479">
+												<SimplePredicate field="SCR_CELL_90DAY_CALL_TTL_TIME" operator="lessThan" value="142481.5"/>
+											</Node>
+											<Node id="9" score="-0.0689187">
+												<SimplePredicate field="SCR_CELL_90DAY_CALL_TTL_TIME" operator="greaterOrEqual" value="142481.5"/>
+											</Node>
+										</Node>
+										<Node id="5" defaultChild="10">
+											<SimplePredicate field="SMS_L30D_TOTAL_CNT" operator="greaterOrEqual" value="793.5"/>
+											<Node id="10" score="-0.05097258">
+												<SimplePredicate field="TRC_LSM5_TOTAL_AMT" operator="lessThan" value="1200.735"/>
+											</Node>
+											<Node id="11" score="0.03189543">
+												<SimplePredicate field="TRC_LSM5_TOTAL_AMT" operator="greaterOrEqual" value="1200.735"/>
+											</Node>
+										</Node>
+									</Node>
+									<Node id="3" defaultChild="6">
+										<SimplePredicate field="PHONE_USE_MTH" operator="greaterOrEqual" value="8.5"/>
+										<Node id="6" defaultChild="12">
+											<SimplePredicate field="SMS_L150D_TTL_PPL" operator="lessThan" value="3.5"/>
+											<Node id="12" score="0.0061752954">
+												<SimplePredicate field="SCR_CELL_AFTN_CALL_TTL_TIME" operator="lessThan" value="2320.0"/>
+											</Node>
+											<Node id="13" score="-0.07469232">
+												<SimplePredicate field="SCR_CELL_AFTN_CALL_TTL_TIME" operator="greaterOrEqual" value="2320.0"/>
+											</Node>
+										</Node>
+										<Node id="7" defaultChild="14">
+											<SimplePredicate field="SMS_L150D_TTL_PPL" operator="greaterOrEqual" value="3.5"/>
+											<Node id="14" score="-0.010186633">
+												<SimplePredicate field="SCR_CELL_CALLING_CTT_DAYS_CNT" operator="lessThan" value="146.5"/>
+											</Node>
+											<Node id="15" score="-0.039760128">
+												<SimplePredicate field="SCR_CELL_CALLING_CTT_DAYS_CNT" operator="greaterOrEqual" value="146.5"/>
+											</Node>
+										</Node>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+						<Segment id="31">
+							<True/>
+							<TreeModel functionName="regression" missingValueStrategy="defaultChild" splitCharacteristic="binarySplit" x-mathContext="float">
+								<MiningSchema>
+									<MiningField name="PHONE_USE_MTH"/>
+									<MiningField name="SCR_CELL_NIGHT_CALL_TTL_TIME"/>
+									<MiningField name="SMS_L30D_TOTAL_CNT"/>
+									<MiningField name="sms_l90d_total_cnt"/>
+									<MiningField name="TRC_LSM1_AVG_TOTAL_AMT"/>
+								</MiningSchema>
+								<Node id="1" defaultChild="2">
+									<True/>
+									<Node id="2" defaultChild="4">
+										<SimplePredicate field="PHONE_USE_MTH" operator="lessThan" value="26.5"/>
+										<Node id="4" defaultChild="8">
+											<SimplePredicate field="sms_l90d_total_cnt" operator="lessThan" value="37.5"/>
+											<Node id="8" score="-0.035426047">
+												<SimplePredicate field="TRC_LSM1_AVG_TOTAL_AMT" operator="lessThan" value="113.715"/>
+											</Node>
+											<Node id="9" score="-0.067024626">
+												<SimplePredicate field="TRC_LSM1_AVG_TOTAL_AMT" operator="greaterOrEqual" value="113.715"/>
+											</Node>
+										</Node>
+										<Node id="5" defaultChild="10">
+											<SimplePredicate field="sms_l90d_total_cnt" operator="greaterOrEqual" value="37.5"/>
+											<Node id="10" score="0.054162502">
+												<SimplePredicate field="SMS_L30D_TOTAL_CNT" operator="lessThan" value="2.5"/>
+											</Node>
+											<Node id="11" score="-0.04456954">
+												<SimplePredicate field="SMS_L30D_TOTAL_CNT" operator="greaterOrEqual" value="2.5"/>
+											</Node>
+										</Node>
+									</Node>
+									<Node id="3" defaultChild="6">
+										<SimplePredicate field="PHONE_USE_MTH" operator="greaterOrEqual" value="26.5"/>
+										<Node id="6" defaultChild="12">
+											<SimplePredicate field="sms_l90d_total_cnt" operator="lessThan" value="32.5"/>
+											<Node id="12" score="-0.069752626">
+												<SimplePredicate field="SCR_CELL_NIGHT_CALL_TTL_TIME" operator="lessThan" value="6341.5"/>
+											</Node>
+											<Node id="13" score="-0.03870678">
+												<SimplePredicate field="SCR_CELL_NIGHT_CALL_TTL_TIME" operator="greaterOrEqual" value="6341.5"/>
+											</Node>
+										</Node>
+										<Node id="7" defaultChild="14">
+											<SimplePredicate field="sms_l90d_total_cnt" operator="greaterOrEqual" value="32.5"/>
+											<Node id="14" score="-0.04335611">
+												<SimplePredicate field="TRC_LSM1_AVG_TOTAL_AMT" operator="lessThan" value="106.685"/>
+											</Node>
+											<Node id="15" score="-0.0071704094">
+												<SimplePredicate field="TRC_LSM1_AVG_TOTAL_AMT" operator="greaterOrEqual" value="106.685"/>
+											</Node>
+										</Node>
+									</Node>
+								</Node>
+							</TreeModel>
+						</Segment>
+					</Segmentation>
+				</MiningModel>
+			</Segment>
+			<Segment id="2">
+				<True/>
+				<RegressionModel functionName="classification" normalizationMethod="logit" x-mathContext="float">
+					<MiningSchema>
+						<MiningField name="target" usageType="target"/>
+						<MiningField name="xgbValue"/>
+					</MiningSchema>
+					<Output>
+						<OutputField name="probability(0)" optype="continuous" dataType="float" feature="probability" value="0"/>
+						<OutputField name="probability(1)" optype="continuous" dataType="float" feature="probability" value="1"/>
+					</Output>
+					<RegressionTable intercept="0.0" targetCategory="1">
+						<NumericPredictor name="xgbValue" coefficient="1.0"/>
+					</RegressionTable>
+					<RegressionTable intercept="0.0" targetCategory="0"/>
+				</RegressionModel>
+			</Segment>
+		</Segmentation>
+	</MiningModel>
+</PMML>
